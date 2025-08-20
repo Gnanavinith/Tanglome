@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@import '@fontsource/poppins';
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  animation: scroll 25s linear infinite;
+  width: max-content;
+  min-width: 100%;
+}
+
+
