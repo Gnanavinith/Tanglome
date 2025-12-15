@@ -1,198 +1,170 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { ArrowRight, Star, Zap, Shield, TrendingUp } from "lucide-react";
 
-import { IoCall } from "react-icons/io5";
-import Ecommerce from "../assets/Ecommerce.jpg";
-import Billing from "../assets/Billing.jpg";
-import BlockChain from "../assets/Blockchain.jpg";
-import WebApplications from "../assets/Web.png";
-import Analytics from "../assets/Analysis.png";
-import Cloud from "../assets/Cloud.jpg";
-import Contact from "../Components/Contact";
-import windows from "../assets/windowsApp.jpg";
-
-const softwareProducts = [
+const products = [
   {
-    id: 1,
-    name: "E-Commerce Platform",
-    description: "A powerful online store solution with secure payment integration.",
-    image: Ecommerce,
+    title: "Mobile Billing Shop",
+    description: "Billing & stock management tailored for mobile stores.",
+    image: "https://res.cloudinary.com/dj1mlgoem/image/upload/v1759498506/MobileBilling2_fzaasa.jpg",
+    link: "/products/mobile-billing",
+    features: ["Real-time Inventory", "Barcode Scanning", "Multi-payment", "Offline Support"],
+    gradient: "from-blue-500 to-purple-600",
+    icon: <TrendingUp className="w-6 h-6" />
   },
   {
-    id: 2,
-    name: "Billing & Invoicing Software",
-    description: "Efficient and automated billing for businesses of all sizes.",
-    image: Billing,
-  },
-  {
-    id: 3,
-    name: "Blockchain Solutions",
-    description: "Secure and decentralized applications with blockchain technology.",
-    image: BlockChain,
-  },
-  {
-    id: 4,
-    name: "Custom Web Applications",
-    description: "Bespoke web solutions tailored to your business needs.",
-    image: WebApplications,
-  },
-  {
-    id: 5,
-    name: "AI & Data Analytics",
-    description: "Smart AI-powered insights to drive business growth.",
-    image: Analytics,
-  },
-  {
-    id: 6,
-    name: "Cloud-Based Solutions",
-    description: "Scalable and secure cloud infrastructure for your business.",
-    image: Cloud,
+    title: "CRM for Software Consulting",
+    description: "End-to-end CRM for software consulting firms.",
+    image: "https://res.cloudinary.com/dj1mlgoem/image/upload/v1759498522/DataVis_xrmj6i.webp",
+    link: "/products/crm-consulting",
+    features: ["Client Management", "Project Tracking", "HR Integration", "Analytics"],
+    gradient: "from-green-500 to-cyan-600",
+    icon: <Shield className="w-6 h-6" />
   },
 ];
 
 const Products = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    if (performance.navigation.type === 1) {
-      navigate("/products");
-    }
-  }, [navigate]);
-
   return (
     <>
-  {/* SEO Helmet */}
-  <Helmet>
-    <title>Tanglome Products - Powerful Software Solutions</title>
-    <meta
-      name="description"
-      content="Discover Tanglome's range of software products including e-commerce platforms, billing systems, blockchain, AI, cloud and custom web applications."
-    />
-    <meta
-      name="keywords"
-      content="Software Products, E-Commerce Platform, Billing Software, Blockchain Solutions, Web Applications, AI, Cloud Solutions, Tanglome"
-    />
-    <meta name="author" content="Tanglome" />
-
-    {/* Open Graph */}
-    <meta property="og:title" content="Tanglome Software Products" />
-    <meta property="og:description" content="Explore Tanglome's full suite of digital products designed to empower businesses." />
-    <meta property="og:url" content="https://tanglome.com/products" />
-    <meta property="og:image" content="https://tanglome.com/products-image.png" />
-
-    {/* Twitter */}
-    <meta name="twitter:title" content="Tanglome Software Products" />
-    <meta name="twitter:description" content="Explore Tanglome's product lineup including e-commerce, cloud, blockchain, AI and more." />
-    <meta name="twitter:image" content="https://tanglome.com/products-twitter.png" />
-  </Helmet>
-
-  <div>
-    <motion.section
-      className="w-full min-h-screen bg-gray-900 text-white px-6 py-16"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
-      {/* Header */}
-      <motion.div className="text-center" initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }}>
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-transparent bg-clip-text mt-15">
-          Our Software Products
-        </h1>
-
-        <motion.p
-          className="max-w-3xl mx-auto text-2xl mt-5"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-        >
-          Empowering businesses with cutting-edge digital solutions.
-        </motion.p>
-      </motion.div>
-
-      {/* Featured Products */}
-      <motion.div className="max-w-5xl mx-auto mt-14" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-        <div className="flex justify-center mt-10">
-          <motion.button
-            className="px-8 py-3 text-lg font-bold text-gray-900 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 shadow-lg relative overflow-hidden transition-all duration-300 ease-in-out 
-              hover:scale-110 hover:shadow-[0px_0px_20px_rgba(255,215,0,0.8)]"
-            whileHover={{ scale: 1.15, boxShadow: "0px 0px 25px rgba(255,215,0,0.9)" }}
-            animate={{ y: [0, -5, 0], transition: { duration: 2, repeat: Infinity, ease: "easeInOut" } }}
-          >
-            <span className="relative z-10">Our Featured Products</span>
-          </motion.button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-          <div className="bg-gray-800 rounded-xl shadow-lg text-center p-8 border border-gray-200 transition duration-300 hover:shadow-2xl">
-            <h2 className="text-white text-2xl font-semibold">Web Application</h2>
-            <p className="text-gray-400 mt-2">Bespoke web solutions tailored to your business needs.</p>
-            <img src={WebApplications} alt="Featured Web Application" className="w-full h-56 object-cover rounded-lg mt-4 shadow-lg" />
-            <a
-              href="https://thetee.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-6 px-6 py-3 text-white bg-blue-600 hover:bg-blue-500 rounded-lg text-sm font-medium transition duration-300"
-            >
-              View Our Previous Project
-            </a>
-          </div>
-
-          <div className="bg-gray-800 rounded-xl shadow-lg text-center p-8 border border-gray-200 transition duration-300 hover:shadow-2xl">
-            <h2 className="text-white text-2xl font-semibold">Windows Application</h2>
-            <p className="text-gray-400 mt-2">Powerful desktop applications designed for performance and efficiency.</p>
-            <img src={windows} alt="Featured Windows Application" className="w-full h-56 object-cover rounded-lg mt-4 shadow-lg" />
-            <a
-              href="https://www.boxbilling.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-6 px-6 py-3 text-white bg-blue-600 hover:bg-blue-500 rounded-lg text-sm font-medium transition duration-300"
-            >
-              View Our Previous Project
-            </a>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14 mt-12 max-w-5xl mx-auto">
-        {softwareProducts.map((product, index) => (
-          <motion.div
-            key={product.id}
-            className="relative bg-gray-800 rounded-xl shadow-lg text-center overflow-hidden transition-transform duration-300 hover:scale-105 group border border-gray-700"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="relative">
-              <motion.img src={product.image} alt={product.name} className="w-full h-40 rounded-t-xl object-cover shadow-lg group-hover:opacity-70 transition-opacity duration-300" />
-              <motion.div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
-            </div>
-
-            <div className="p-6 relative">
-              <h3 className="text-xl font-semibold text-gray-300">{product.name}</h3>
-              <p className="text-gray-300 mt-2 text-sm">{product.description}</p>
-              <motion.button
-                className="mt-5 px-4 py-2 bg-blue-700 text-white font-sm rounded-full shadow-md hover:bg-blue-600 transition-all"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                Learn More
-              </motion.button>
-            </div>
-          </motion.div>
-        ))}
+      <Helmet>
+        <title>Products | Mobile Billing & CRM Software Solutions | Tanglome</title>
+        <meta
+          name="description"
+          content="Tanglome offers innovative software products including Mobile Billing Shop solution and CRM for Software Consulting firms. Custom software solutions for businesses in Coimbatore, India."
+        />
+        <meta
+          name="keywords"
+          content="mobile billing software, CRM software, software consulting CRM, billing management system, stock management software, mobile store billing, CRM for IT consulting, project tracking software, client management system, software products Coimbatore, business software solutions India"
+        />
+        <meta name="author" content="Tanglome" />
+        <meta property="og:title" content="Products | Software Solutions by Tanglome" />
+        <meta property="og:description" content="Innovative software products: Mobile Billing Shop and CRM for Software Consulting firms." />
+        <meta property="og:url" content="https://tanglome.com/products" />
+        <meta property="og:type" content="website" />
+      </Helmet>
+    <div className="min-h-screen bg-gray-900 px-6 py-16 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full blur-3xl opacity-20 animate-pulse delay-1000"></div>
       </div>
-    </motion.section>
-    <Contact />
-  </div>
-</>
 
+      <div className="max-w-7xl mx-auto relative z-10">
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+         
+          
+          <h1 className="text-6xl mt-10 md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-pink-200 text-transparent bg-clip-text">
+            Our Products
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Transform your business with our cutting-edge software solutions designed for modern enterprises
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {products.map((product, idx) => (
+            <motion.div
+              key={idx}
+              className="group relative"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: idx * 0.2 }}
+            >
+              {/* Card Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl border border-gray-700 shadow-2xl group-hover:border-purple-500/50 transition-all duration-500"></div>
+              
+              {/* Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              <div className="relative z-10 p-8 h-full flex flex-col">
+                {/* Image Container */}
+                <div className="relative mb-6 overflow-hidden rounded-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
+                  <img 
+                    src={product.image} 
+                    alt={product.title}
+                    className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <div className={`p-3 rounded-xl bg-gradient-to-r ${product.gradient} backdrop-blur-sm`}>
+                      {product.icon}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text transition-all duration-300">
+                    {product.title}
+                  </h3>
+                  
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    {product.description}
+                  </p>
+
+                  {/* Features */}
+                  <div className="mb-6">
+                    <div className="flex flex-wrap gap-2">
+                      {product.features.map((feature, featureIdx) => (
+                        <span
+                          key={featureIdx}
+                          className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm text-gray-300 border border-white/20"
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <Link
+                  to={product.link}
+                  className="group/btn inline-flex items-center justify-between w-full p-4 bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl border border-gray-700 hover:border-purple-500 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20"
+                >
+                  <span className="text-white font-semibold">View details</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-purple-400 text-sm">Explore</span>
+                    <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg group-hover/btn:scale-110 transition-transform duration-300">
+                      <ArrowRight className="w-4 h-4 text-white" />
+                    </div>
+                  </div>
+                </Link>
+              </div>
+
+              {/* Hover Effect */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500/0 via-purple-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+        >
+          <p className="text-gray-400 mb-6">Need a custom solution?</p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold rounded-2xl transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/30"
+          >
+            <span>Get Custom Quote</span>
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </motion.div>
+      </div>
+    </div>
+    </>
   );
 };
 
 export default Products;
-

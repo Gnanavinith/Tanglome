@@ -1,3 +1,30 @@
 User-agent: *
 Allow: /
+
+# Sitemap
 Sitemap: https://tanglome.com/sitemap.xml
+
+# Allow all important pages
+Allow: /about
+Allow: /solutions
+Allow: /products
+Allow: /services
+Allow: /contact
+Allow: /schedule-meeting
+Allow: /careers
+
+# Allow CSS and JS for proper rendering
+Allow: /static/
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /dashboard/
+
+# Crawl delay (optional)
+Crawl-delay: 1

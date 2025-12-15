@@ -1,14 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import AppDevelopment from "../assets/MobileApp.jpg";
-import WebDevelopment from "../assets/Web.png";
-import Seo from "../assets/Seo.jpg";
-import GraphicsDesigning from "../assets/Graphics Design.jpg";
-import SocialMediaMarketing from "../assets/SocialMediaMarket.jpg";
-import PaidAdCampaign from "../assets/AdCampaign.jpg";
-import NewProductDevelopment from "../assets/Software.jpg";
-import HostingService from "../assets/Hosting.jpg";
-import WindowsApp from "../assets/windowsApp.jpg";
 import Contact from "../Components/Contact";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +10,7 @@ const services = [
   {
     id: 1,
     name: "App Development",
-    image: AppDevelopment,
+    image: "https://res.cloudinary.com/dj1mlgoem/image/upload/v1759498504/MobileApp_fwkzxi.jpg",
     details: [
       {
         title: "Custom App Development",
@@ -46,7 +37,7 @@ const services = [
   {
     id: 2,
     name: "Windows Application Development",
-    image: WindowsApp,
+    image: "https://res.cloudinary.com/dj1mlgoem/image/upload/v1759498514/windowsApp_wklshj.jpg",
     details: [
       {
         title: "Custom Windows Applications",
@@ -73,7 +64,7 @@ const services = [
   {
     id: 3,
     name: "Web Development",
-    image: WebDevelopment,
+    image: "https://res.cloudinary.com/dj1mlgoem/image/upload/v1759498511/Web_tgeywq.png",
     details: [
       {
         title: "Custom Website Development",
@@ -100,7 +91,7 @@ const services = [
   {
     id: 4,
     name: "SEO Optimization",
-    image: Seo,
+    image: "https://res.cloudinary.com/dj1mlgoem/image/upload/v1759498513/Seo_zytpea.jpg",
     details: [
       {
         title: "On-Page SEO",
@@ -127,7 +118,7 @@ const services = [
   {
     id: 5,
     name: "Graphics Designing",
-    image: GraphicsDesigning,
+    image: "https://res.cloudinary.com/dj1mlgoem/image/upload/v1759498506/Graphics_Design_sbfaar.jpg",
     details: [
       {
         title: "Logo & Branding",
@@ -154,7 +145,7 @@ const services = [
   {
     id: 6,
     name: "Social Media Marketing",
-    image: SocialMediaMarketing,
+    image: "https://res.cloudinary.com/dj1mlgoem/image/upload/v1759498516/SocialMediaMarket_ka9i7q.jpg",
     details: [
       {
         title: "Content Strategy",
@@ -181,7 +172,7 @@ const services = [
   {
     id: 7,
     name: "Paid Ad Campaigns",
-    image: PaidAdCampaign,
+    image: "https://res.cloudinary.com/dj1mlgoem/image/upload/v1759498498/AdCampaign_ta2sx0.webp",
     details: [
       {
         title: "Google Ads",
@@ -208,7 +199,7 @@ const services = [
   {
     id: 8,
     name: "New Product Development",
-    image: NewProductDevelopment,
+    image: "https://res.cloudinary.com/dj1mlgoem/image/upload/v1759498510/Software_mabcyx.jpg",
     details: [
       {
         title: "Software Development",
@@ -235,7 +226,7 @@ const services = [
   {
     id: 9,
     name: "Hosting Services",
-    image: HostingService,
+    image: "https://res.cloudinary.com/dj1mlgoem/image/upload/v1759498518/Hosting_pah9ny.jpg",
     details: [
       {
         title: "Cloud Hosting",
@@ -275,35 +266,25 @@ const Services = () => {
   }, [navigate]);
   
   return (
-
      <>
-  <Helmet>
-    <title>Tanglome Services - Software, Web, App & Digital Marketing Solutions</title>
-    <meta
-      name="description"
-      content="Tanglome offers a full range of IT services including app development, web development, Windows applications, SEO, graphic design, social media marketing, paid ad campaigns, and hosting solutions."
-    />
-    <meta
-      name="keywords"
-      content="App Development, Web Development, Windows Applications, SEO Optimization, Graphics Designing, Social Media Marketing, Paid Ads, Hosting Services, Tanglome Services"
-    />
-    <meta name="author" content="Tanglome" />
-    {/* Open Graph */}
-    <meta property="og:title" content="Tanglome Services" />
-    <meta
-      property="og:description"
-      content="Explore Tanglome's full range of software development and digital marketing services."
-    />
-    <meta property="og:url" content="https://tanglome.com/services" />
-    <meta property="og:image" content="https://tanglome.com/services-image.png" />
-    {/* Twitter */}
-    <meta name="twitter:title" content="Tanglome Services" />
-    <meta
-      name="twitter:description"
-      content="Discover Tanglome's full suite of development and marketing services."
-    />
-    <meta name="twitter:image" content="https://tanglome.com/services-twitter.png" />
-  </Helmet>
+      <Helmet>
+        <title>IT Services & Solutions | Web Development, App Development, Digital Marketing in Coimbatore</title>
+        <meta
+          name="description"
+          content="Tanglome offers comprehensive IT services in Coimbatore: web development, mobile app development, e-commerce solutions, Shopify development, digital marketing, SEO, graphics design, and hosting services. Top-rated IT consulting company in Tamilnadu."
+        />
+        <meta
+          name="keywords"
+          content="web development in Coimbatore, web development company in Coimbatore, web design company in Coimbatore, web application development company in Coimbatore, top rated web development in Coimbatore, web development agency in Coimbatore, web development company in Tamilnadu, web design company saravanampatti coimbatore, web developer near me, app development company in Coimbatore, mobile app development company in Coimbatore, top mobile app development company in Coimbatore, android app development company in Coimbatore, ios app development company in Coimbatore, flutter app development company in Coimbatore, web app development company in Coimbatore, ecommerce app development company in Coimbatore, ecommerce website development company in India, top ecommerce website development company in India, best ecommerce website development company in India, ecommerce website development company in Coimbatore, shopify development company in India, best shopify development company in India, top shopify development company in India, shopify app development company in India, hire shopify developers India, shopify experts India, shopify development services, digital marketing agency Coimbatore, top digital marketing agency Coimbatore, digital marketing company in Coimbatore for freshers, digital marketing agency Tamilnadu, digital marketing agency in saravanampatti coimbatore, best digital marketing agency in Coimbatore, healthcare digital marketing agency in Coimbatore, top 10 digital marketing agencies in Coimbatore, SEO services Coimbatore, graphics design Coimbatore, hosting services Coimbatore, IT services Coimbatore"
+        />
+        <meta name="author" content="Tanglome" />
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Coimbatore" />
+        <meta property="og:title" content="IT Services & Solutions in Coimbatore | Tanglome" />
+        <meta property="og:description" content="Comprehensive IT services in Coimbatore: web development, app development, e-commerce, Shopify, digital marketing, and more." />
+        <meta property="og:url" content="https://tanglome.com/services" />
+        <meta property="og:type" content="website" />
+      </Helmet>
 
   <div className="w-full min-h-screen bg-gray-900 px-6 py-16">
     <div className="max-w-6xl mx-auto mt-15 space-y-16">

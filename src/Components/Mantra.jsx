@@ -47,10 +47,6 @@ const Mantra = () => {
 
   return (
     <section className="h-auto bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 flex flex-col items-center justify-center px-6 py-16">
-      {/* Prevent Google from indexing this page */}
-      <Helmet>
-        <meta name="robots" content="noindex, nofollow" />
-      </Helmet>
 
       {/* Title */}
       <motion.h2

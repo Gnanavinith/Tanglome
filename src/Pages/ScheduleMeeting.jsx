@@ -31,17 +31,7 @@ const ScheduleMeeting = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Schedule a Meeting | Book a Call with ZeonHub</title>
-        <meta name="description" content="Book your free consultation with ZeonHub. Schedule a one-on-one meeting to discuss your web development, app development, SEO or digital marketing needs." />
-        <meta name="keywords" content="ZeonHub Meeting, Book Consultation, Schedule Appointment, Web Development Consultation, App Development Discussion, Digital Marketing Strategy" />
-        <meta property="og:title" content="Schedule a Meeting with ZeonHub" />
-        <meta property="og:description" content="Schedule a free 30-minute consultation with ZeonHub experts to explore your business requirements." />
-        <meta property="og:url" content="https://zeonhub.com/schedule-meeting" />
-        <meta property="og:image" content="https://zeonhub.com/schedule-meeting-preview-image.png" />
-        <meta name="twitter:title" content="Book a Call with ZeonHub" />
-        <meta name="twitter:description" content="Book your consultation call with ZeonHub specialists today." />
-      </Helmet>
+     
 
       <div className="min-h-screen flex items-center justify-center bg-gray-900 px-4 sm:px-6 py-10">
         <div className="w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-4xl bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-2xl mt-20">
