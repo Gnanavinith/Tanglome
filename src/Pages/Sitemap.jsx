@@ -1,75 +1,152 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
 const SitemapPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   const pages = [
     {
       url: 'https://tanglome.com/',
-      lastmod: '2025-10-03',
+      lastmod: '2026-02-18',
       priority: '1.0',
       changefreq: 'daily'
     },
     {
       url: 'https://tanglome.com/about',
-      lastmod: '2025-10-03',
+      lastmod: '2026-02-18',
       priority: '0.8',
       changefreq: 'monthly'
     },
     {
       url: 'https://tanglome.com/solutions',
-      lastmod: '2025-10-03',
+      lastmod: '2026-02-18',
       priority: '0.8',
       changefreq: 'monthly'
     },
     {
       url: 'https://tanglome.com/products',
-      lastmod: '2025-10-03',
+      lastmod: '2026-02-18',
       priority: '0.7',
       changefreq: 'monthly'
     },
     {
       url: 'https://tanglome.com/products/mobile-billing',
-      lastmod: '2025-10-03',
+      lastmod: '2026-02-18',
       priority: '0.6',
       changefreq: 'monthly'
     },
     {
       url: 'https://tanglome.com/products/crm-consulting',
-      lastmod: '2025-10-03',
+      lastmod: '2026-02-18',
       priority: '0.6',
       changefreq: 'monthly'
     },
     {
       url: 'https://tanglome.com/services',
-      lastmod: '2025-10-03',
+      lastmod: '2026-02-18',
       priority: '0.9',
       changefreq: 'weekly'
     },
     {
+      url: 'https://tanglome.com/services/web-development',
+      lastmod: '2026-02-18',
+      priority: '0.7',
+      changefreq: 'monthly'
+    },
+    {
+      url: 'https://tanglome.com/services/app-development',
+      lastmod: '2026-02-18',
+      priority: '0.7',
+      changefreq: 'monthly'
+    },
+    {
+      url: 'https://tanglome.com/services/ai-solutions',
+      lastmod: '2026-02-18',
+      priority: '0.7',
+      changefreq: 'monthly'
+    },
+    {
+      url: 'https://tanglome.com/services/cloud-services',
+      lastmod: '2026-02-18',
+      priority: '0.7',
+      changefreq: 'monthly'
+    },
+    {
+      url: 'https://tanglome.com/services/digital-marketing',
+      lastmod: '2026-02-18',
+      priority: '0.7',
+      changefreq: 'monthly'
+    },
+    {
+      url: 'https://tanglome.com/services/whatsapp-automation',
+      lastmod: '2026-02-18',
+      priority: '0.7',
+      changefreq: 'monthly'
+    },
+    {
+      url: 'https://tanglome.com/services/mvp-development',
+      lastmod: '2026-02-18',
+      priority: '0.7',
+      changefreq: 'monthly'
+    },
+    {
+      url: 'https://tanglome.com/ourservices',
+      lastmod: '2026-02-18',
+      priority: '0.8',
+      changefreq: 'weekly'
+    },
+    {
       url: 'https://tanglome.com/contact',
-      lastmod: '2025-10-03',
+      lastmod: '2026-02-18',
       priority: '0.7',
       changefreq: 'monthly'
     },
     {
       url: 'https://tanglome.com/schedule-meeting',
-      lastmod: '2025-10-03',
+      lastmod: '2026-02-18',
       priority: '0.7',
       changefreq: 'monthly'
     },
     {
       url: 'https://tanglome.com/careers',
-      lastmod: '2025-10-03',
+      lastmod: '2026-02-18',
       priority: '0.7',
       changefreq: 'monthly'
+    },
+    {
+      url: 'https://tanglome.com/team',
+      lastmod: '2026-02-18',
+      priority: '0.6',
+      changefreq: 'monthly'
+    },
+    {
+      url: 'https://tanglome.com/portfolio',
+      lastmod: '2026-02-18',
+      priority: '0.6',
+      changefreq: 'monthly'
+    },
+    {
+      url: 'https://tanglome.com/sitemap',
+      lastmod: '2026-02-18',
+      priority: '0.3',
+      changefreq: 'monthly'
+    },
+    {
+      url: 'https://tanglome.com/faq',
+      lastmod: '2026-02-18',
+      priority: '0.7',
+      changefreq: 'weekly'
     }
   ];
 
   return (
     <>
       <Helmet>
-        <title>Sitemap | Tanglome</title>
-        <meta name="description" content="Complete sitemap of Tanglome website with all pages and URLs" />
+        <title>Sitemap | Tanglome - No 1 IT Company in India & Tamil Nadu</title>
+        <meta name="description" content="Complete sitemap of Tanglome website - No 1 IT Company in India & Tamil Nadu. Access all pages for web development, app development, AI solutions, digital marketing, and more." />
+        <meta name="keywords" content="Tanglome sitemap, Tanglome India, Tanglome Tamil Nadu, Tanglome IT Solutions, web development sitemap, app development sitemap, AI solutions sitemap, digital marketing sitemap, IT services India, web development India, app development India, AI solutions India, digital marketing India, IT company Tamil Nadu" />
       </Helmet>
 
       <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">

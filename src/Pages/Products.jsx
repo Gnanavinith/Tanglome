@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -26,17 +26,21 @@ const products = [
 ];
 
 const Products = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <>
       <Helmet>
-        <title>Products | Mobile Billing & CRM Software Solutions | Tanglome</title>
+        <title>Products | Tanglome - No 1 IT Company in India & Tamil Nadu | Software Solutions</title>
         <meta
           name="description"
-          content="Tanglome offers innovative software products including Mobile Billing Shop solution and CRM for Software Consulting firms. Custom software solutions for businesses in Coimbatore, India."
+          content="Products by Tanglome - No 1 IT Company in India & Tamil Nadu. Innovative software solutions including Mobile Billing Shop and CRM for Software Consulting firms. Custom software products for businesses in India and worldwide."
         />
         <meta
           name="keywords"
-          content="mobile billing software, CRM software, software consulting CRM, billing management system, stock management software, mobile store billing, CRM for IT consulting, project tracking software, client management system, software products Coimbatore, business software solutions India"
+          content="Tanglome products, Tanglome software products, mobile billing software, CRM software, software consulting CRM, billing management system, stock management software, mobile store billing, CRM for IT consulting, project tracking software, client management system, software products Coimbatore, business software solutions India, custom software products, software development company products, IT company products India, enterprise software solutions, business automation software, inventory management software, retail POS software, software as a service India, SaaS products India, custom CRM development, mobile billing solutions, stock management system, billing software India, retail management software, Point of Sale system, inventory tracking software, business management software, enterprise resource planning, business process automation, software solutions for SME, digital transformation products, cloud based software India, mobile retail solutions, e-commerce billing software, ERP solutions India, business intelligence tools, data analytics software, workflow management tools, employee management system, customer management software, order management system"
         />
         <meta name="author" content="Tanglome" />
         <meta property="og:title" content="Products | Software Solutions by Tanglome" />

@@ -1,42 +1,144 @@
 import React from 'react'
 import { motion } from "framer-motion";
-import { MdKeyboardArrowRight } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import {
+  FiUser,
+  FiPhone,
+  FiMail,
+  FiMessageSquare,
+  FiCheckCircle,
+  FiClock,
+  FiAward,
+  FiZap,
+  FiHelpCircle,
+  FiGlobe,
+  FiStar,
+  FiSend
+} from "react-icons/fi";
 
 const Contact = () => {
   return (
-    <div className="relative w-full min-h-[350px] bg-gray-900 text-white flex flex-col items-center justify-center text-center px-6 py-16">
-      {/* Full-Screen Animated Background Waves */}
-      <div className="absolute inset-0 opacity-20 w-full h-full">
-        <svg className="w-full h-full" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path fillOpacity="0.5" className="fill-gray-500" d="M0,160L48,154.7C96,149,192,139,288,154.7C384,171,480,213,576,197.3C672,181,768,107,864,101.3C960,96,1056,160,1152,186.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-        </svg>
+    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold text-gray-900 mb-4">Ready to Start?</h2>
+          <h3 className="text-3xl font-semibold text-gray-800 mb-4">Let's Build Together!</h3>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Your vision deserves exceptional execution. Let's transform your ideas into digital reality!
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="text-center p-6 bg-white rounded-xl shadow-md">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <FiZap className="w-8 h-8 text-blue-600" />
+            </div>
+            <h4 className="text-xl font-bold text-gray-900 mb-2">Fast Launch</h4>
+            <p className="text-gray-600">Quick project kickoff</p>
+          </div>
+          
+          <div className="text-center p-6 bg-white rounded-xl shadow-md">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <FiHelpCircle className="w-8 h-8 text-green-600" />
+            </div>
+            <h4 className="text-xl font-bold text-gray-900 mb-2">24/7 Support</h4>
+            <p className="text-gray-600">Always here to help</p>
+          </div>
+          
+          <div className="text-center p-6 bg-white rounded-xl shadow-md">
+            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <FiStar className="w-8 h-8 text-purple-600" />
+            </div>
+            <h4 className="text-xl font-bold text-gray-900 mb-2">Premium Quality</h4>
+            <p className="text-gray-600">Exceptional results</p>
+          </div>
+          
+          <div className="text-center p-6 bg-white rounded-xl shadow-md">
+            <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <FiClock className="w-8 h-8 text-orange-600" />
+            </div>
+            <h4 className="text-xl font-bold text-gray-900 mb-2">On Time</h4>
+            <p className="text-gray-600">Deadline commitment</p>
+          </div>
+        </div>
+
+        <div className="text-center mb-12">
+          <h3 className="text-3xl font-bold text-gray-900 mb-4">Start Your Journey</h3>
+          <p className="text-xl text-gray-600 mb-8">Let's discuss your project and create something amazing</p>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
+          <form className="space-y-6">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Your full name</label>
+              <div className="relative">
+                <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <input
+                  type="text"
+                  id="name"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  placeholder="Your full name"
+                />
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Phone number</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span className="text-gray-500">+91</span>
+                  </div>
+                  <div className="relative">
+                    <FiPhone className="absolute left-12 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <input
+                      type="tel"
+                      id="phone"
+                      className="w-full pl-16 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                      placeholder="Phone number"
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">your.email@example.com</label>
+                <div className="relative">
+                  <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Tell us about your project... What are you looking to build?</label>
+              <div className="relative">
+                <FiMessageSquare className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
+                <textarea
+                  id="message"
+                  rows={5}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  placeholder="Tell us about your project... What are you looking to build?"
+                ></textarea>
+              </div>
+            </div>
+            
+            <button
+              type="submit"
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 px-6 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+            >
+              <FiSend className="w-5 h-5" />
+              Launch Project
+            </button>
+          </form>
+        </div>
       </div>
-
-      {/* Heading */}
-      <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 text-transparent bg-clip-text relative z-10">
-        Connect Us
-      </h1>
-
-      {/* Description */}
-      <p className="text-gray-300 mt-3 text-lg max-w-xl relative z-10">
-        Ready to Elevate Your Digital Experience? Let's Transform Together!
-      </p>
-
-      {/* Contact Button */}
-      <div className="absolute bottom-[40px]">
-        <Link to="/schedule-meeting">
-          <motion.button
-            className="px-6 py-3 bg-blue-700 text-white font-lg rounded-full hover:bg-blue-500 transition duration-300 flex items-center gap-2"
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            Hire Your Developer Now <MdKeyboardArrowRight className="text-2xl" />
-          </motion.button>
-        </Link>
-      </div>
-    </div>
+    </section>
   );
 }
 

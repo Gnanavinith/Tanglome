@@ -1,0 +1,309 @@
+{
+  "name": "Tanglome AI CTA Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ai-cta-webhook",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "userMessage",
+              "value": "={{ $json.body.message }}"
+            },
+            {
+              "name": "userEmail",
+              "value": "={{ $json.body.email || '' }}"
+            },
+            {
+              "name": "userPhone",
+              "value": "={{ $json.body.phone || '' }}"
+            },
+            {
+              "name": "timestamp",
+              "value": "={{ new Date().toISOString() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "data-processing",
+      "name": "Process User Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-3.5-turbo",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are Tanglome's AI assistant. You help users with inquiries about web development, mobile apps, AI solutions, and digital marketing services. Keep responses professional, helpful, and encourage scheduling meetings when appropriate. Always include contact information when relevant."
+            },
+            {
+              "role": "user",
+              "content": "={{ $json.userMessage }}"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 300
+        }
+      },
+      "id": "ai-response",
+      "name": "Generate AI Response",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        650,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.userMessage.toLowerCase().includes('schedule') || $json.userMessage.toLowerCase().includes('meeting') || $json.userMessage.toLowerCase().includes('talk') }}",
+              "operation": "equal",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "schedule-check",
+      "name": "Check for Scheduling Request",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        850,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "calendar": "={{ $parameter['calendarId'] }}",
+        "start": "={{ new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString() }}",
+        "end": "={{ new Date(Date.now() + 24 * 60 * 60 * 1000 + 30 * 60 * 1000).toISOString() }}",
+        "additionalFields": {
+          "summary": "={{ 'Meeting Request: ' + $json.userEmail }}",
+          "description": "={{ 'User Message: ' + $json.userMessage + '\\n\\nPhone: ' + $json.userPhone }}",
+          "attendees": [
+            {
+              "email": "gnanavinith@tanglome.com"
+            },
+            {
+              "email": "={{ $json.userEmail }}"
+            }
+          ]
+        }
+      },
+      "id": "create-calendar-event",
+      "name": "Create Calendar Event",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1,
+      "position": [
+        1050,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "message": "={{ 'Hello! I\\'d be happy to schedule a meeting with our CEO. Please visit: https://tanglome.com/schedule-meeting' }}",
+        "phoneNumber": "={{ $json.userPhone || '9585458794' }}",
+        "options": {}
+      },
+      "id": "whatsapp-schedule",
+      "name": "Send WhatsApp Schedule Link",
+      "type": "n8n-nodes-base.whatsapp",
+      "typeVersion": 1,
+      "position": [
+        1250,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "message": "={{ $json.response }}",
+        "phoneNumber": "={{ $json.userPhone || '9585458794' }}",
+        "options": {}
+      },
+      "id": "whatsapp-response",
+      "name": "Send WhatsApp Response",
+      "type": "n8n-nodes-base.whatsapp",
+      "typeVersion": 1,
+      "position": [
+        1050,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "hello@tanglome.com",
+        "toEmail": "={{ $json.userEmail || 'hello@tanglome.com' }}",
+        "subject": "Tanglome - Your AI Assistant Response",
+        "text": "={{ $json.response + '\\n\\nFor immediate assistance, you can also reach us on WhatsApp at +91 9585458794' }}",
+        "options": {}
+      },
+      "id": "send-email",
+      "name": "Send Email Response",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        1250,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "sheetId": "={{ $parameter['sheetId'] }}",
+        "range": "A:D",
+        "data": [
+          {
+            "values": [
+              "={{ $json.timestamp }}",
+              "={{ $json.userEmail }}",
+              "={{ $json.userPhone }}",
+              "={{ $json.userMessage }}",
+              "={{ $json.response }}"
+            ]
+          }
+        ]
+      },
+      "id": "log-to-sheets",
+      "name": "Log to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 1,
+      "position": [
+        1450,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Process User Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process User Data": {
+      "main": [
+        [
+          {
+            "node": "Generate AI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate AI Response": {
+      "main": [
+        [
+          {
+            "node": "Check for Scheduling Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check for Scheduling Request": {
+      "main": [
+        [
+          {
+            "node": "Create Calendar Event",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send WhatsApp Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Calendar Event": {
+      "main": [
+        [
+          {
+            "node": "Send WhatsApp Schedule Link",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send WhatsApp Schedule Link": {
+      "main": [
+        [
+          {
+            "node": "Log to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send WhatsApp Response": {
+      "main": [
+        [
+          {
+            "node": "Send Email Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email Response": {
+      "main": [
+        [
+          {
+            "node": "Log to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "saveExecutionProgress": true,
+    "timezone": "Asia/Kolkata",
+    "executionTimeout": 300
+  }
+}

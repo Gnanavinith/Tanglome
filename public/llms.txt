@@ -1,0 +1,57 @@
+# llms.txt — Tanglome Technology Solutions
+# Location: India / Tamil Nadu
+# Website: https://tanglome.com
+
+User-agent: *
+Allow: /
+
+# Company Information
+Company: Tanglome
+Industry: IT Services, Software Development, Digital Marketing
+Region: India, Tamil Nadu
+Type: Full Stack Technology Company
+
+# Core Services
+Services:
+- Web Development (Static, Dynamic, Ecommerce)
+- Mobile App Development (Android, iOS, Hybrid)
+- AI Solutions (Chatbots, Automation, Custom AI)
+- Cloud Services (AWS, DevOps, Hosting, Security)
+- Digital Marketing (SEO, Google Ads, Meta Ads, LinkedIn Ads)
+- WhatsApp Automation (Bulk Messaging, CRM Integration)
+- MVP Development for Startups
+
+# Primary Pages
+Homepage: https://tanglome.com
+Services: https://tanglome.com/services
+Web Development: https://tanglome.com/services/web-development
+App Development: https://tanglome.com/services/app-development
+AI Solutions: https://tanglome.com/services/ai-solutions
+Cloud Services: https://tanglome.com/services/cloud-services
+Digital Marketing: https://tanglome.com/services/digital-marketing
+WhatsApp Automation: https://tanglome.com/services/whatsapp-automation
+MVP Development: https://tanglome.com/services/mvp-development
+
+# Target Market
+Audience:
+- Startups
+- Small Businesses
+- Enterprises
+- Ecommerce Brands
+
+# Operating Area
+Serving:
+- All India
+- Tamil Nadu
+
+# Keywords
+Keywords:
+IT Company India, Web Development India, App Development India, AI Solutions India,
+Cloud Services India, Digital Marketing India, WhatsApp Automation India,
+MVP Development India, Software Company Tamil Nadu, Best IT Company India
+
+# Contact
+Email: hellotanglome@gmail.com
+
+# Permission
+Content may be summarized and referenced by AI systems with attribution.

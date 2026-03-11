@@ -1,82 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-import {
-  MdKeyboardArrowDown,
-  MdKeyboardArrowUp,
-  MdKeyboardArrowRight,
-} from "react-icons/md";
-import {
-  FaReact,
-  FaNodeJs,
-  FaDatabase,
-  FaBootstrap,
-  FaApple,
-  FaWindows,
-  FaChartLine,
-  FaAws,
-  FaLightbulb,
-  FaUserTie,
-  FaPencilRuler,
-  FaCheckCircle,
-  FaHandshake,
-  FaSmile,
-  FaRocket,
-  FaGlobeAmericas,
-  FaCode,
-  FaMobileAlt,
-} from "react-icons/fa";
-import {
-  SiExpress,
-  SiSequelize,
-  SiTailwindcss,
-  SiPhp,
-  SiMysql,
-  SiRedux,
-  SiFlutter,
-  SiAdobexd,
-  SiFigma,
-  SiGoogleads,
-  SiMeta,
-  SiCanva,
-  SiAdobephotoshop,
-  SiFirebase,
-  SiVercel,
-  SiNetlify,
-  SiDigitalocean,
-} from "react-icons/si";
-
 import { Link, useNavigate } from "react-router-dom";
 import Contact from "../Components/Contact";
+import {
+  ChevronDown,
+  ChevronUp,
+  ArrowRight,
+  Lightbulb,
+  PenTool,
+  CheckCircle2,
+  Handshake,
+  TrendingUp,
+  UserCheck,
+  Rocket,
+  Star,
+  Zap,
+  Award,
+  Users,
+  Briefcase,
+  Calendar
+} from 'lucide-react';
 
-
-const Software="https://res.cloudinary.com/dj1mlgoem/image/upload/v1759498510/Software_mabcyx.jpg"
-// Floating particles component
-const FloatingParticles = () => {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(15)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-2 h-2 bg-purple-500 rounded-full opacity-20"
-          initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            x: [0, Math.random() * 20 - 10, 0],
-          }}
-          transition={{
-            duration: 3 + Math.random() * 4,
-            repeat: Infinity,
-            delay: Math.random() * 2,
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+const Software = "https://res.cloudinary.com/dj1mlgoem/image/upload/v1759498510/Software_mabcyx.jpg";
 
 // Animated counter component
 const AnimatedCounter = ({ end, duration = 2, label }) => {
@@ -99,486 +45,395 @@ const AnimatedCounter = ({ end, duration = 2, label }) => {
   }, [end, duration]);
 
   return (
-    <div className="text-center p-4">
-      <motion.div
-        className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text"
-        initial={{ scale: 0.5 }}
-        whileInView={{ scale: 1 }}
-        transition={{ type: "spring", stiffness: 100 }}
-      >
+    <div className="text-center">
+      <div className="text-5xl md:text-6xl font-bold text-slate-900 mb-2 font-mono">
         {count}+
-      </motion.div>
-      <div className="text-gray-300 mt-2 text-lg">{label}</div>
+      </div>
+      <div className="text-slate-600 text-sm font-medium">{label}</div>
     </div>
   );
 };
 
-// FAQ Data
-const faqItems = [
+// Why Choose Us Data
+const whyChooseUs = [
   {
     title: "Future-Ready Solutions",
     content:
       "We don't just build for today—we engineer solutions that scale with your growth, keeping you ahead in the digital race.",
-    icon: <FaLightbulb className="text-yellow-400 text-xl" />,
-    gradient: "from-yellow-500 to-orange-500",
+    icon: Lightbulb,
   },
   {
     title: "Beyond the Ordinary",
     content:
       "Creativity fuels our strategies. We craft unique digital experiences that leave a lasting impact on your customers.",
-    icon: <FaPencilRuler className="text-pink-400 text-xl" />,
-    gradient: "from-pink-500 to-purple-500",
+    icon: PenTool,
   },
   {
     title: "Built for Performance",
     content:
       "Speed, security, and efficiency—our solutions are optimized to deliver peak performance without compromise.",
-    icon: <FaCheckCircle className="text-green-400 text-xl" />,
-    gradient: "from-green-500 to-teal-500",
+    icon: CheckCircle2,
   },
   {
     title: "True Partnership, Not Just a Service",
     content:
       "Your success is our mission. We collaborate closely, ensuring every solution aligns with your goals and vision.",
-    icon: <FaHandshake className="text-purple-400 text-xl" />,
-    gradient: "from-purple-500 to-indigo-500",
+    icon: Handshake,
   },
   {
     title: "Results That Matter",
     content:
       "We measure success by tangible results—higher conversions, increased efficiency, and unstoppable growth.",
-    icon: <FaChartLine className="text-blue-400 text-xl" />,
-    gradient: "from-blue-500 to-cyan-500",
+    icon: TrendingUp,
   },
   {
     title: "Digital Transformation, Simplified",
     content:
       "We cut through the complexity and provide seamless, easy-to-adopt digital solutions tailored for your business.",
-    icon: <FaUserTie className="text-gray-400 text-xl" />,
-    gradient: "from-gray-500 to-blue-500",
+    icon: UserCheck,
   },
 ];
 
-// Technologies Data
-const technologies = [
-  { name: "React", icon: <FaReact className="text-blue-400 text-4xl" /> },
-  { name: "ReactNative", icon: <FaReact className="text-blue-400 text-4xl" /> },
-  { name: "Redux", icon: <SiRedux className="text-purple-500 text-4xl" /> },
-  { name: "Node.js", icon: <FaNodeJs className="text-green-500 text-4xl" /> },
+// Technologies Data - Organized by category
+const techCategories = [
   {
-    name: "Express.js",
-    icon: <SiExpress className="text-gray-300 text-4xl" />,
-  },
-  { name: "MongoDB", icon: <FaDatabase className="text-green-400 text-4xl" /> },
-  {
-    name: "Sequelize",
-    icon: <SiSequelize className="text-blue-500 text-4xl" />,
-  },
-  { name: "MySQL", icon: <SiMysql className="text-blue-400 text-4xl" /> },
-  { name: "PHP", icon: <SiPhp className="text-indigo-500 text-4xl" /> },
-  {
-    name: "Bootstrap",
-    icon: <FaBootstrap className="text-purple-600 text-4xl" />,
+    title: "Frontend Development",
+    technologies: ["React", "React Native", "Redux", "Bootstrap", "Tailwind CSS", "Flutter"]
   },
   {
-    name: "Tailwind CSS",
-    icon: <SiTailwindcss className="text-teal-400 text-4xl" />,
+    title: "Backend Development",
+    technologies: ["Node.js", "Express.js", "PHP", "MongoDB", "MySQL", "Sequelize"]
   },
-  { name: "Flutter", icon: <SiFlutter className="text-blue-400 text-4xl" /> },
-  { name: "Adobe XD", icon: <SiAdobexd className="text-pink-500 text-4xl" /> },
-  { name: "Figma", icon: <SiFigma className="text-purple-400 text-4xl" /> },
   {
-    name: "Google Ads",
-    icon: <SiGoogleads className="text-yellow-500 text-4xl" />,
+    title: "Design & Creative",
+    technologies: ["Adobe XD", "Figma", "Canva", "Photoshop"]
   },
-  { name: "Meta Ads", icon: <SiMeta className="text-blue-600 text-4xl" /> },
-  { name: "Canva", icon: <SiCanva className="text-blue-500 text-4xl" /> },
   {
-    name: "Adobe Photoshop",
-    icon: <SiAdobephotoshop className="text-blue-600 text-4xl" />,
+    title: "Marketing & Ads",
+    technologies: ["Google Ads", "Meta Ads"]
   },
+  {
+    title: "Cloud & Hosting",
+    technologies: ["AWS", "Firebase", "Vercel", "Netlify", "Digital Ocean"]
+  },
+  {
+    title: "Platforms",
+    technologies: ["Apple", "Windows"]
+  }
 ];
 
-// Hosting Tools Data
-const hostingTools = [
-  { name: "AWS", icon: <FaAws className="text-yellow-500 text-4xl" /> },
-  {
-    name: "Firebase",
-    icon: <SiFirebase className="text-yellow-400 text-4xl" />,
-  },
-  { name: "Vercel", icon: <SiVercel className="text-white text-4xl" /> },
-  { name: "Netlify", icon: <SiNetlify className="text-blue-400 text-4xl" /> },
-  {
-    name: "Digital Ocean",
-    icon: <SiDigitalocean className="text-blue-500 text-4xl" />,
-  },
-  { name: "Apple", icon: <FaApple className="text-gray-300 text-4xl" /> },
-  { name: "Windows", icon: <FaWindows className="text-blue-500 text-4xl" /> },
-];
-
-// **About Component**
+// About Component
 const About = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const navigate = useNavigate();
 
-  const toggleFAQ = (index) => {
+  const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-  const navigate = useNavigate();
-  useEffect(() => {
-    // Scroll to the top when the page loads
-    window.scrollTo(0, 0);
 
-    // Redirect to home page on refresh
+  useEffect(() => {
+    window.scrollTo(0, 0);
     if (performance.navigation.type === 1) {
       navigate("/about");
     }
   }, [navigate]);
 
+  const stats = [
+    { end: 50, label: "Projects Completed", icon: Briefcase },
+    { end: 25, label: "Happy Clients", icon: Users },
+    { end: 15, label: "Team Members", icon: Award },
+    { end: 3, label: "Years Experience", icon: Calendar }
+  ];
+
   return (
     <>
       <Helmet>
-        <title>About Tanglome | IT Consulting Company in Coimbatore, India</title>
+        <title>About Tanglome | No 1 IT Company in India & Tamil Nadu | Leading IT Consulting Services</title>
         <meta
           name="description"
-          content="Tanglome is a leading IT consulting company in Coimbatore, India. We provide expert IT consulting services, IT strategy consulting, IT management consulting, and global IT consulting solutions. Learn about our team, technologies, and commitment to excellence."
+          content="About Tanglome - No 1 IT Company in India & Tamil Nadu. Leading IT consulting services, web development, mobile app development, AI solutions, and digital marketing. Learn about our team, technologies, and commitment to excellence."
         />
         <meta
           name="keywords"
-          content="IT consulting, IT consulting companies, IT consulting services, IT consulting firm, IT consulting companies in India, IT strategy consulting, IT management consulting, global IT consulting, big 4 IT consulting firms, top IT consulting firms, Deloitte IT consulting, PwC IT consulting, EY IT consulting, Infosys IT consulting, Accenture IT consulting, healthcare IT consulting, IT HR consulting, IT consulting internships, IT consulting entry level jobs, IT consulting website, IT consulting business, IT consulting near me, Tanglome, Coimbatore, Tamilnadu, India"
+          content="Tanglome IT Solutions, Tanglome India, Tanglome Tamil Nadu, Tanglome Web Development Company, Tanglome Digital Agency India, No 1 IT Company in India, No 1 Web Development Company in India, No 1 IT Company in Tamil Nadu, Best Web Development Company in India, Web Development Company in Tamil Nadu, Mobile App Development Company India, Android App Development India, iOS App Development India, AI Development Company India, Artificial Intelligence Solutions India, Digital Marketing Company India, Digital Marketing Agency Tamil Nadu, WhatsApp Automation Services India, MVP Development Company India, IT Company in Tamil Nadu, Software Company in Tamil Nadu, IT Services Company India, Best IT Company in India, IT Consulting Company India, IT Services India, Software Development Company India, Technology Company India, IT Solutions Company India, IT Consulting Services India, Coimbatore IT Company, IT Company Coimbatore, Software Company Tamil Nadu"
         />
-        <meta name="author" content="Tanglome" />
-        <meta name="geo.region" content="IN-TN" />
-        <meta name="geo.placename" content="Coimbatore" />
-        <meta property="og:title" content="About Tanglome | IT Consulting Company in Coimbatore" />
-        <meta property="og:description" content="Leading IT consulting company in Coimbatore, India. Expert IT consulting services, IT strategy, and management consulting solutions." />
-        <meta property="og:url" content="https://tanglome.com/about" />
-        <meta property="og:type" content="website" />
       </Helmet>
-     
-      {/* Main container with Solutions page style background */}
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 lg:bg-gradient-to-r lg:from-gray-900 lg:via-gray-800 lg:to-gray-700 relative overflow-hidden">
-        {/* Animated Background for Desktop */}
-        <div className="absolute inset-0">
-          <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl hidden lg:block"
-          />
-          <motion.div
-            animate={{
-              scale: [1.2, 1, 1.2],
-              opacity: [0.2, 0.4, 0.2],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2
-            }}
-            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500 rounded-full blur-3xl hidden lg:block"
-          />
-        </div>
+
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
         
-        <div className="relative z-10">
+        * {
+          font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
         
-        {/* Hero Section */}
-        <section className="w-full min-h-screen px-4 sm:px-8 md:px-16 lg:px-24 py-16 flex flex-col-reverse lg:flex-row items-center justify-between text-white relative">
-          <motion.div
-            className="w-full lg:w-1/2 text-center lg:text-left z-10"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mt-5 sm:mt-8 md:mt-12 lg:mt-20 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text leading-tight">
-              Shaping Tomorrow's Digital Landscape
-            </h1>
+        h1, h2, h3, h4, h5, h6 {
+          font-family: 'Crimson Pro', Georgia, serif;
+        }
+        
+        .font-mono {
+          font-family: 'JetBrains Mono', 'Courier New', monospace;
+        }
+      `}</style>
 
-            <motion.span 
-              className="text-lg sm:text-xl md:text-2xl text-gray-300 block mt-5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              Where Innovation Meets <span className="text-yellow-400 font-semibold">Intelligent Solutions</span>
-            </motion.span>
-
-            <motion.div
-              className="max-w-3xl mx-auto lg:mx-0 mt-6 text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-            >
-              <p>
-                At <span className="text-purple-400 font-semibold">Tanglome</span>, we blend innovation with expertise to craft impactful digital
-                solutions. From startups to industry leaders, we drive growth and transformation
-                through cutting-edge technology and strategic thinking.
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 mt-10 justify-center lg:justify-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-            >
-              <Link to="/schedule-meeting" className="flex justify-center lg:justify-start">
-                <motion.button
-                  className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-lg font-bold rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-purple-500/25"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Get Started Now <MdKeyboardArrowRight className="text-2xl" />
-                </motion.button>
-              </Link>
-              <motion.button
-                className="px-8 py-4 border-2 border-purple-500 text-purple-400 text-lg font-bold rounded-full hover:bg-purple-500 hover:text-white transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Our Work
-              </motion.button>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            className="w-full lg:w-1/2 flex justify-center mb-10 lg:mb-0 z-10"
-            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <div className="relative">
-              <motion.div
-                className="absolute -inset-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur-lg opacity-30"
-                animate={{
-                  opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              ></motion.div>
-              <img
-                src={Software}
-                alt="Tech Illustration"
-                loading="lazy"
-                className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl relative z-10"
-              />
+      {/* Navigation Bar */}
+      <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-lg border-b border-slate-200 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="text-2xl font-bold text-slate-900">
+              Tanglome
             </div>
-          </motion.div>
-        </section>
+            <div className="flex items-center gap-6">
+              <a href="/" className="text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                Home
+              </a>
+              <a href="/services" className="text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                Services
+              </a>
+              <a href="/portfolio" className="text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                Portfolio
+              </a>
+              <a 
+                href="/contact" 
+                className="bg-slate-900 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors"
+              >
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
 
-        {/* Stats Section */}
-        <section className="w-full px-6 py-16">
-          <div className="max-w-6xl mx-auto">
-            <motion.div 
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-4xl font-bold text-white">Our Impact in Numbers</h2>
-              <p className="text-gray-400 text-xl mt-4">Delivering excellence across the globe</p>
-            </motion.div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <AnimatedCounter end={50} label="Projects Completed" />
-              <AnimatedCounter end={25} label="Happy Clients" />
-              <AnimatedCounter end={15} label="Team Members" />
-              <AnimatedCounter end={3} label="Years Experience" />
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+        {/* Hero Section */}
+        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <div className="inline-flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-full mb-6">
+                  <Star className="w-4 h-4 text-slate-700" />
+                  <span className="text-sm font-medium text-slate-700">
+                    Est. 2021 • Coimbatore, India
+                  </span>
+                </div>
+
+                <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-slate-900 mb-6 leading-[0.95]">
+                  Shaping Tomorrow's
+                  <br />
+                  <span className="text-slate-400">Digital Landscape</span>
+                </h1>
+
+                <p className="text-xl text-slate-600 mb-4 leading-relaxed">
+                  Where Innovation Meets <span className="font-semibold text-slate-900">Intelligent Solutions</span>
+                </p>
+
+                <p className="text-lg text-slate-600 leading-relaxed mb-8">
+                  At Tanglome, we blend innovation with expertise to craft impactful digital
+                  solutions. From startups to industry leaders, we drive growth and transformation
+                  through cutting-edge technology and strategic thinking.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link to="/contact">
+                    <button className="group inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-lg font-medium hover:bg-slate-800 transition-all">
+                      Get Started Now
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </Link>
+                  <Link to="/portfolio">
+                    <button className="inline-flex items-center gap-2 border-2 border-slate-900 text-slate-900 px-8 py-4 rounded-lg font-medium hover:bg-slate-900 hover:text-white transition-all">
+                      View Our Work
+                    </button>
+                  </Link>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="relative rounded-2xl overflow-hidden border-2 border-slate-200 shadow-xl">
+                  <img
+                    src={Software}
+                    alt="Tech Illustration"
+                    loading="lazy"
+                    className="w-full"
+                  />
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="w-full px-6 py-16 flex flex-col items-center text-center">
-          <motion.div 
-            className="max-w-3xl p-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl font-semibold text-yellow-400">Why Choose Us?</h2>
-            <p className="text-gray-300 text-2xl mt-3">Your Path to Innovation and Success!</p>
-          </motion.div>
+        {/* Stats Section */}
+        <section className="py-20 bg-slate-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+                Our Impact in Numbers
+              </h2>
+              <p className="text-xl text-slate-300">
+                Delivering excellence across the globe
+              </p>
+            </div>
 
-          <div className="max-w-4xl w-full mt-6">
-            {faqItems.map((item, index) => (
-              <motion.div 
-                key={index} 
-                className="mb-6 rounded-2xl overflow-hidden shadow-2xl"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-              >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className={`w-full flex justify-between items-center bg-gradient-to-r ${item.gradient} px-6 py-5 text-left transition-all duration-300 hover:shadow-lg`}
-                >
-                  <div className="flex items-center gap-5">
-                    <div className="p-3 bg-white/10 rounded-xl backdrop-blur-sm">
-                      {item.icon}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              {stats.map((stat, index) => {
+                const Icon = stat.icon;
+                return (
+                  <div key={index} className="text-center">
+                    <div className="bg-white/10 p-3 rounded-xl inline-flex mb-4">
+                      <Icon className="w-6 h-6 text-white" />
                     </div>
-                    <span className="font-bold text-white text-xl">{item.title}</span>
+                    <AnimatedCounter end={stat.end} label={stat.label} />
                   </div>
-                  {openIndex === index ? (
-                    <MdKeyboardArrowUp className="text-2xl text-white transition-transform duration-500" />
-                  ) : (
-                    <MdKeyboardArrowDown className="text-2xl text-white transition-transform duration-500" />
-                  )}
-                </button>
-                {openIndex === index && (
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl sm:text-6xl font-bold text-slate-900 mb-4">
+                Why Choose Us?
+              </h2>
+              <p className="text-xl text-slate-600">
+                Your Path to Innovation and Success
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {whyChooseUs.map((item, index) => {
+                const Icon = item.icon;
+                return (
                   <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="bg-gray-800/80 backdrop-blur-sm px-6 py-5 text-gray-200"
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="bg-white border-2 border-slate-200 rounded-2xl overflow-hidden hover:border-slate-900 hover:shadow-xl transition-all"
                   >
-                    {item.content}
+                    <button
+                      onClick={() => toggleAccordion(index)}
+                      className="w-full flex justify-between items-center px-6 py-5 text-left"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="bg-slate-100 p-3 rounded-xl">
+                          <Icon className="w-5 h-5 text-slate-900" />
+                        </div>
+                        <span className="font-bold text-slate-900 text-lg">
+                          {item.title}
+                        </span>
+                      </div>
+                      {openIndex === index ? (
+                        <ChevronUp className="w-6 h-6 text-slate-900" />
+                      ) : (
+                        <ChevronDown className="w-6 h-6 text-slate-900" />
+                      )}
+                    </button>
+                    {openIndex === index && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="px-6 pb-5 pt-2 text-slate-600 leading-relaxed border-t-2 border-slate-100"
+                      >
+                        {item.content}
+                      </motion.div>
+                    )}
                   </motion.div>
-                )}
-              </motion.div>
-            ))}
+                );
+              })}
+            </div>
           </div>
         </section>
 
         {/* Technologies Section */}
-        <section className="w-full px-6 py-16 flex flex-col items-center text-center">
-          <motion.div 
-            className="max-w-6xl"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl font-semibold text-yellow-400">Technologies We Use</h2>
-            <p className="text-gray-300 text-2xl mt-5">
-              We use modern frameworks and cloud solutions for high-performance applications.
-            </p>
+        <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl sm:text-6xl font-bold text-slate-900 mb-4">
+                Our Technology Stack
+              </h2>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                We use modern frameworks and cloud solutions for high-performance applications
+              </p>
+            </div>
 
-            <motion.div 
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 mt-10"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {technologies.map((tech, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {techCategories.map((category, index) => (
                 <motion.div
                   key={index}
-                  className="flex flex-col items-center p-6 bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group hover:bg-gray-700/80"
-                  whileHover={{ 
-                    scale: 1.1, 
-                    y: -10,
-                    transition: { type: "spring", stiffness: 300 }
-                  }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="bg-slate-50 border-2 border-slate-200 rounded-2xl p-6 hover:border-slate-900 transition-all"
                 >
-                  <div className="group-hover:scale-110 transition-transform duration-300">
-                    {tech.icon}
+                  <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <Zap className="w-5 h-5" />
+                    {category.title}
+                  </h3>
+                  <div className="space-y-2">
+                    {category.technologies.map((tech, techIndex) => (
+                      <div
+                        key={techIndex}
+                        className="flex items-center gap-2 text-slate-700"
+                      >
+                        <div className="w-1.5 h-1.5 bg-slate-900 rounded-full" />
+                        <span className="text-sm">{tech}</span>
+                      </div>
+                    ))}
                   </div>
-                  <p className="text-gray-300 mt-3 font-medium group-hover:text-white">{tech.name}</p>
                 </motion.div>
               ))}
-            </motion.div>
-          </motion.div>
-        </section>
-
-        {/* Hosting Tools Section */}
-        <section className="w-full px-6 py-16 flex flex-col items-center text-center">
-          <motion.div 
-            className="max-w-6xl"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl font-semibold text-yellow-400">Hosting & Deployment Tools</h2>
-            <p className="text-gray-300 text-2xl mt-5">
-              Reliable hosting and deployment solutions for seamless scalability and performance.
-            </p>
-
-            <motion.div 
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 mt-10"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {hostingTools.map((tool, index) => (
-                <motion.div
-                  key={index}
-                  className="flex flex-col items-center p-6 bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group hover:bg-gray-700/80"
-                  whileHover={{ 
-                    scale: 1.1, 
-                    y: -10,
-                    transition: { type: "spring", stiffness: 300 }
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                >
-                  <div className="group-hover:scale-110 transition-transform duration-300">
-                    {tool.icon}
-                  </div>
-                  <p className="text-gray-300 mt-3 font-medium group-hover:text-white">{tool.name}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </section>
 
         {/* CTA Section */}
-        <section className="w-full px-6 py-20 bg-gradient-to-r from-purple-900/80 to-pink-800/80 backdrop-blur-sm relative overflow-hidden">
-          <div className="absolute inset-0 bg-black/20"></div>
-          <motion.div 
-            className="max-w-4xl mx-auto text-center relative z-10"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-2xl mb-6">
+              <Rocket className="w-8 h-8 text-white" />
+            </div>
+            
+            <h2 className="text-5xl font-bold text-white mb-6">
               Ready to Transform Your Digital Presence?
             </h2>
-            <p className="text-xl text-purple-100 mb-10 max-w-2xl mx-auto">
-              Let's build something extraordinary together. Our team is ready to bring your vision to life with cutting-edge technology and creative solutions.
+            
+            <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Let's build something extraordinary together. Our team is ready to bring your vision 
+              to life with cutting-edge technology and creative solutions.
             </p>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <Link to="/schedule-meeting">
-                <motion.button
-                  className="px-10 py-4 bg-white text-purple-600 text-lg font-bold rounded-full hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Start Your Project <FaRocket className="text-lg" />
-                </motion.button>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact">
+                <button className="group inline-flex items-center justify-center gap-2 bg-white text-slate-900 px-10 py-4 rounded-lg font-semibold hover:bg-slate-100 transition-all">
+                  Start Your Project
+                  <Rocket className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </button>
               </Link>
-              <motion.button
-                className="px-10 py-4 border-2 border-white text-white text-lg font-bold rounded-full hover:bg-white hover:text-purple-600 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Case Studies
-              </motion.button>
-            </motion.div>
-          </motion.div>
+              <Link to="/portfolio">
+                <button className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-10 py-4 rounded-lg font-semibold hover:bg-white hover:text-slate-900 transition-all">
+                  View Case Studies
+                </button>
+              </Link>
+            </div>
+          </div>
         </section>
 
-        {/* Contact Section */}
         <Contact />
-        </div>
       </div>
     </>
   );

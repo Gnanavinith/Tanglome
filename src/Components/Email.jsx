@@ -100,32 +100,15 @@ const Email = () => {
   }
 
   return (
-    <div className="min-h-screen relative  overflow-hidden">
-      {/* Animated Background Elements */}
-      <motion.div
-        className="absolute top-20 left-10 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.3, 0.2],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-        }}
-      />
-      <motion.div
-        className="absolute bottom-20 right-10 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.3, 0.2, 0.3],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-        }}
-      />
+    <div className="relative bg-white">
+      {/* Subtle Background Elements */}
+      <div className="absolute top-0 right-0 w-80 h-80 sm:w-96 sm:h-96 bg-gradient-to-bl from-[#A556F8]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 sm:w-96 sm:h-96 bg-gradient-to-tr from-[#4922E5]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none"></div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between w-full min-h-screen px-4 sm:px-6 lg:px-8 py-16">
+      <div className="relative z-0 flex flex-col lg:flex-row items-center justify-between w-full h-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Left Side - Engaging Content */}
         <motion.div 
           className="lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0 px-4 lg:px-8"
@@ -134,62 +117,60 @@ const Email = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h2 
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#020202] mb-4 sm:mb-6"
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-              Ready to Start?
-            </span>
+            Ready to Start?
             <br />
-            <span className="text-white">Let's Build Together!</span>
+            <span className="text-[#A556F8]">Let's Build Together!</span>
           </motion.h2>
           
           <motion.p 
-            className="text-xl sm:text-2xl text-gray-300 mb-8 leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
             Your vision deserves exceptional execution. 
-            <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent font-semibold">
+            <span className="text-[#4922E5] font-semibold">
               {" "}Let's transform your ideas into digital reality!
             </span>
           </motion.p>
 
           {/* Benefits Grid */}
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
             {[
               { 
-                icon: <FaRocket className="text-2xl text-purple-400" />, 
+                icon: <FaRocket className="text-2xl text-[#A556F8]" />, 
                 title: "Fast Launch", 
                 desc: "Quick project kickoff" 
               },
               { 
-                icon: <FaHeadset className="text-2xl text-blue-400" />, 
+                icon: <FaHeadset className="text-2xl text-[#4922E5]" />, 
                 title: "24/7 Support", 
                 desc: "Always here to help" 
               },
               { 
-                icon: <FaStar className="text-2xl text-yellow-400" />, 
+                icon: <FaStar className="text-2xl text-yellow-500" />, 
                 title: "Premium Quality", 
                 desc: "Exceptional results" 
               },
               { 
-                icon: <FaClock className="text-2xl text-green-400" />, 
+                icon: <FaClock className="text-2xl text-green-500" />, 
                 title: "On Time", 
                 desc: "Deadline commitment" 
               },
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="flex items-start space-x-4 p-4 bg-white/5 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300"
+                className="flex items-start space-x-4 p-4 bg-white border-2 border-gray-100 rounded-xl hover:border-[#A556F8]/30 shadow-lg hover:shadow-xl transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
@@ -199,8 +180,8 @@ const Email = () => {
                   {item.icon}
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-lg">{item.title}</h3>
-                  <p className="text-gray-400 text-sm">{item.desc}</p>
+                  <h3 className="text-[#020202] font-semibold text-lg">{item.title}</h3>
+                  <p className="text-gray-600 text-sm">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -216,12 +197,12 @@ const Email = () => {
         >
           <motion.form 
             onSubmit={handleSubmit}
-            className="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl"
+            className="bg-white border-2 border-gray-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             <motion.h3 
-              className="text-2xl sm:text-3xl font-bold text-white text-center mb-2"
+              className="text-2xl sm:text-3xl font-bold text-[#020202] text-center mb-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -229,7 +210,7 @@ const Email = () => {
               Start Your Journey
             </motion.h3>
             <motion.p 
-              className="text-gray-400 text-center mb-6 sm:mb-8 text-sm sm:text-base"
+              className="text-gray-600 text-center mb-6 sm:mb-8 text-sm sm:text-base"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
@@ -251,14 +232,14 @@ const Email = () => {
                     placeholder="Your full name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className={`w-full pl-12 pr-4 py-3 sm:py-4 bg-white/5 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 text-sm sm:text-base ${
-                      errors.name ? "border-red-500 focus:ring-red-500" : "border-white/10 focus:border-purple-500"
+                    className={`w-full pl-12 pr-4 py-3 sm:py-4 bg-gray-50 border rounded-xl text-[#020202] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#A556F8] transition-all duration-300 text-sm sm:text-base ${
+                      errors.name ? "border-red-500 focus:ring-red-500" : "border-gray-200 focus:border-[#A556F8]"
                     }`}
                   />
                 </div>
                 {errors.name && (
                   <motion.p 
-                    className="text-red-400 text-sm mt-2 flex items-center"
+                    className="text-red-500 text-sm mt-2 flex items-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                   >
@@ -278,9 +259,9 @@ const Email = () => {
                   <div className="flex items-stretch">
                     {/* Country Code Dropdown - Mobile Optimized */}
                     <div className="relative group flex-shrink-0">
-                      <div className="flex items-center space-x-2 bg-white/5 border border-white/10 rounded-l-xl px-3 py-3 sm:py-4 border-r-0 min-w-[85px] h-full cursor-pointer hover:bg-white/10 transition-all duration-300">
+                      <div className="flex items-center space-x-2 bg-gray-50 border border-r-0 border-gray-200 rounded-l-xl px-3 py-3 sm:py-4 min-w-[85px] h-full cursor-pointer hover:bg-gray-100 transition-all duration-300">
                         <FaGlobe className="text-gray-400 text-sm flex-shrink-0" />
-                        <span className="text-white text-sm truncate">{countryCode}</span>
+                        <span className="text-[#020202] text-sm truncate">{countryCode}</span>
                         <motion.span
                           animate={{ rotate: 0 }}
                           className="text-gray-400 text-xs flex-shrink-0"
@@ -290,19 +271,19 @@ const Email = () => {
                       </div>
                       
                       {/* Dropdown Menu - Mobile Friendly */}
-                      <div className="absolute top-full left-0 mt-1 w-40 bg-gray-800 border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 backdrop-blur-lg max-h-60 overflow-y-auto">
+                      <div className="absolute top-full left-0 mt-1 w-40 bg-white border border-gray-200 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 max-h-60 overflow-y-auto">
                         {commonCountryCodes.map((country, index) => (
                           <div
                             key={index}
                             onClick={() => setCountryCode(country.code)}
-                            className="flex items-center justify-between px-3 py-3 hover:bg-white/10 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl border-b border-white/5 last:border-b-0"
+                            className="flex items-center justify-between px-3 py-3 hover:bg-gray-50 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl border-b border-gray-100 last:border-b-0"
                           >
-                            <span className="text-white text-sm">{country.code}</span>
-                            <span className="text-gray-400 text-xs">{country.country}</span>
+                            <span className="text-[#020202] text-sm">{country.code}</span>
+                            <span className="text-gray-500 text-xs">{country.country}</span>
                           </div>
                         ))}
                         {/* Custom input option */}
-                        <div className="border-t border-white/10 p-3">
+                        <div className="border-t border-gray-100 p-3">
                           <input
                             type="text"
                             placeholder="+code"
@@ -320,7 +301,7 @@ const Email = () => {
                                 setCountryCode(value);
                               }
                             }}
-                            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-purple-500"
+                            className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-[#020202] text-sm focus:outline-none focus:ring-1 focus:ring-[#A556F8]"
                             maxLength={5}
                             onClick={(e) => e.stopPropagation()}
                           />
@@ -337,8 +318,8 @@ const Email = () => {
                         const value = e.target.value.replace(/\D/g, '');
                         if (value.length <= 15) setPhoneNumber(value);
                       }}
-                      className={`flex-1 min-w-0 pl-4 pr-4 py-3 sm:py-4 bg-white/5 border border-l-0 rounded-r-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 text-sm sm:text-base ${
-                        errors.phone ? "border-red-500 focus:ring-red-500" : "border-white/10 focus:border-purple-500"
+                      className={`flex-1 min-w-0 pl-4 pr-4 py-3 sm:py-4 bg-gray-50 border border-l-0 rounded-r-xl text-[#020202] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#A556F8] transition-all duration-300 text-sm sm:text-base ${
+                        errors.phone ? "border-red-500 focus:ring-red-500" : "border-gray-200 focus:border-[#A556F8]"
                       }`}
                       maxLength={15}
                       inputMode="numeric"
@@ -348,7 +329,7 @@ const Email = () => {
                 </div>
                 {errors.phone && (
                   <motion.p 
-                    className="text-red-400 text-sm mt-2 flex items-center"
+                    className="text-red-500 text-sm mt-2 flex items-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                   >
@@ -370,14 +351,14 @@ const Email = () => {
                     placeholder="your.email@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className={`w-full pl-12 pr-4 py-3 sm:py-4 bg-white/5 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 text-sm sm:text-base ${
-                      errors.email ? "border-red-500 focus:ring-red-500" : "border-white/10 focus:border-purple-500"
+                    className={`w-full pl-12 pr-4 py-3 sm:py-4 bg-gray-50 border rounded-xl text-[#020202] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#A556F8] transition-all duration-300 text-sm sm:text-base ${
+                      errors.email ? "border-red-500 focus:ring-red-500" : "border-gray-200 focus:border-[#A556F8]"
                     }`}
                   />
                 </div>
                 {errors.email && (
                   <motion.p 
-                    className="text-red-400 text-sm mt-2 flex items-center"
+                    className="text-red-500 text-sm mt-2 flex items-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                   >
@@ -399,14 +380,14 @@ const Email = () => {
                     placeholder="Tell us about your project... What are you looking to build?"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className={`w-full pl-12 pr-4 py-3 sm:py-4 bg-white/5 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 resize-none text-sm sm:text-base ${
-                      errors.message ? "border-red-500 focus:ring-red-500" : "border-white/10 focus:border-purple-500"
+                    className={`w-full pl-12 pr-4 py-3 sm:py-4 bg-gray-50 border rounded-xl text-[#020202] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#A556F8] transition-all duration-300 resize-none text-sm sm:text-base ${
+                      errors.message ? "border-red-500 focus:ring-red-500" : "border-gray-200 focus:border-[#A556F8]"
                     }`}
                   />
                 </div>
                 {errors.message && (
                   <motion.p 
-                    className="text-red-400 text-sm mt-2 flex items-center"
+                    className="text-red-500 text-sm mt-2 flex items-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                   >
@@ -421,7 +402,7 @@ const Email = () => {
                 disabled={loading}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-2xl relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-500"
+                className="w-full bg-gradient-to-r from-[#A556F8] to-[#4922E5] hover:from-[#A556F8]/90 hover:to-[#4922E5]/90 text-white py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-2xl relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-500"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 20 }}
@@ -469,10 +450,10 @@ const Email = () => {
                   initial={{ opacity: 0, y: 10, scale: 0.9 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -10, scale: 0.9 }}
-                  className={`mt-4 sm:mt-6 p-3 sm:p-4 rounded-xl text-center font-semibold backdrop-blur-lg border text-sm sm:text-base ${
+                  className={`mt-4 sm:mt-6 p-3 sm:p-4 rounded-xl text-center font-semibold border text-sm sm:text-base ${
                     success.includes("failed") 
-                      ? "bg-red-500/20 border-red-500/30 text-red-200" 
-                      : "bg-green-500/20 border-green-500/30 text-green-200"
+                      ? "bg-red-50 border-red-200 text-red-700" 
+                      : "bg-green-50 border-green-200 text-green-700"
                   }`}
                 >
                   <div className="flex items-center justify-center space-x-2 sm:space-x-3">
@@ -490,28 +471,6 @@ const Email = () => {
           </motion.form>
         </motion.div>
       </div>
-
-      {/* Enhanced Floating Particles */}
-      {[...Array(15)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-white/40 rounded-full"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [0, -80, 0],
-            opacity: [0, 1, 0],
-            scale: [0, 1, 0],
-          }}
-          transition={{
-            duration: Math.random() * 4 + 3,
-            repeat: Infinity,
-            delay: Math.random() * 2,
-          }}
-        />
-      ))}
     </div>
   );
 };

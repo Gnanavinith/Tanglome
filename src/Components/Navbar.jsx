@@ -1,253 +1,260 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
 import { MdRocketLaunch, MdOutlineScheduleSend } from "react-icons/md";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolling, setScrolling] = useState(false);
-  const [activeItem, setActiveItem] = useState("Home");
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
-  const navItems = ["Home", "About", "Solutions", "Products", "Services", "Blog", "Careers", "Contact"];
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  // Handle scroll effect with throttling to prevent flickering
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { 
+      name: "Services", 
+      path: "/services",
+      dropdown: [
+        { name: "Web Development", path: "/services/web-development" },
+        { name: "App Development", path: "/services/app-development" },
+        { name: "AI Solutions", path: "/services/ai-solutions" },
+        { name: "Cloud Services", path: "/services/cloud-services" },
+        { name: "Digital Marketing", path: "/services/digital-marketing" },
+        { name: "WhatsApp Automation", path: "/services/whatsapp-automation" },
+        { name: "MVP Development", path: "/services/mvp-development" }
+      ]
+    },
+    { name: "Solutions", path: "/solutions" },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: "Blog", path: "https://casestudyandblog.netlify.app/", isExternal: true },
+    { name: "Careers", path: "/careers" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   useEffect(() => {
-    let ticking = false;
-    
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrolling(window.scrollY > 50);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    
-    // Set initial state
-    handleScroll();
-    
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle body scroll lock
+  useEffect(() => setMenuOpen(false), [location]);
+
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
-    return () => document.body.style.overflow = "auto";
+    return () => (document.body.style.overflow = "auto");
   }, [menuOpen]);
 
-  // Animation variants
-  const mobileMenuVariants = {
-    closed: { x: "100%" },
-    open: { x: 0 }
-  };
+  // Desktop Nav Link with Dropdown
+  const NavLink = ({ item }) => {
+    const isActive = location.pathname === item.path;
+    const hasDropdown = item.dropdown && item.dropdown.length > 0;
+    const isDropdownActive = dropdownOpen && hasDropdown;
 
-  const overlayVariants = {
-    closed: { opacity: 0 },
-    open: { opacity: 1 }
-  };
+    const base =
+      "px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-1";
 
-  const menuItemVariants = {
-    closed: { x: 20, opacity: 0 },
-    open: (i) => ({ x: 0, opacity: 1, transition: { delay: i * 0.05 } })
-  };
+    const active = "text-black bg-black/10";
 
-  const handleNavClick = (item) => {
-    setActiveItem(item);
-    setMenuOpen(false);
-  };
+    const inactive =
+      "text-black hover:text-gray-700 hover:bg-black/5";
 
-  const NavLink = ({ item, isExternal = false, href = "" }) => {
-    const isActive = activeItem === item;
-    const isBlog = item === "Blog";
-    
-    const commonClasses = `px-4 py-2 rounded-xl transition-all duration-300 ${
-      isActive ? "text-white bg-white/10" : "text-gray-300 hover:text-white hover:bg-white/5"
-    }`;
-
-    if (isBlog) {
+    if (item.isExternal) {
       return (
-        <motion.a
-          href="https://casestudyandblog.netlify.app/"
+        <a
+          href={item.path}
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={{ scale: 1.05 }}
-          className={commonClasses}
-          aria-label={item}
+          className={`${base} ${inactive}`}
         >
-          {item}
-        </motion.a>
+          {item.name}
+        </a>
+      );
+    }
+
+    if (hasDropdown) {
+      return (
+        <div className="relative">
+          <button
+            className={`${base} ${isActive || isDropdownActive ? active : inactive}`}
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
+            {item.name}
+            <FaChevronDown className={`transition-transform duration-200 ${isDropdownActive ? 'rotate-180' : ''}`} />
+          </button>
+          
+          <AnimatePresence>
+            {isDropdownActive && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-gray-100 py-2"
+                onMouseEnter={() => setDropdownOpen(true)}
+                onMouseLeave={() => setDropdownOpen(false)}
+              >
+                {item.dropdown.map((subItem, index) => (
+                  <Link
+                    key={index}
+                    to={subItem.path}
+                    className="block px-4 py-3 text-black hover:bg-black/5 transition-colors duration-200"
+                  >
+                    {subItem.name}
+                  </Link>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       );
     }
 
     return (
-      <motion.div whileHover={{ scale: 1.05 }}>
-        <Link
-          to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-          className={commonClasses}
-          onClick={() => handleNavClick(item)}
-          aria-label={item}
-        >
-          {item}
-        </Link>
-      </motion.div>
+      <Link
+        to={item.path}
+        className={`${base} ${isActive ? active : inactive}`}
+      >
+        {item.name}
+      </Link>
     );
   };
 
-  const MobileNavItem = ({ item, index }) => {
-    const isBlog = item === "Blog";
-    
-    if (isBlog) {
+  // Mobile Nav Link
+  const MobileNavLink = ({ item }) => {
+    const isActive = location.pathname === item.path;
+
+    const base = "flex items-center gap-4 p-4 rounded-xl transition-all";
+
+    const active =
+      "bg-black/10 text-black";
+
+    const inactive =
+      "text-black hover:bg-black/5";
+
+    if (item.isExternal) {
       return (
-        <motion.a
-          href="https://casestudyandblog.netlify.app/"
+        <a
+          href={item.path}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => setMenuOpen(false)}
-          variants={menuItemVariants}
-          custom={index}
-          className="flex items-center gap-4 p-4 rounded-xl text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300 group"
+          className={`${base} ${inactive}`}
         >
-          <div className="w-2 h-2 bg-cyan-400 rounded-full group-hover:scale-125 transition-transform duration-300" />
-          <span className="font-medium">{item}</span>
-        </motion.a>
+          <div className="w-2 h-2 rounded-full bg-current opacity-50" />
+          <span className="font-medium text-lg">{item.name}</span>
+        </a>
       );
     }
 
     return (
-      <motion.div
-        variants={menuItemVariants}
-        custom={index}
-        className="flex items-center gap-4 p-4 rounded-xl text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300 group"
+      <Link
+        to={item.path}
+        className={`${base} ${isActive ? active : inactive}`}
+        onClick={() => setMenuOpen(false)}
       >
-        <div className="w-2 h-2 bg-cyan-400 rounded-full group-hover:scale-125 transition-transform duration-300" />
-        <Link
-          to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-          onClick={() => handleNavClick(item)}
-          className="w-full font-medium"
-        >
-          {item}
-        </Link>
-      </motion.div>
+        <div
+          className={`w-2 h-2 rounded-full ${
+            isActive ? "bg-black" : "bg-gray-400"
+          }`}
+        />
+        <span className="font-medium text-lg">{item.name}</span>
+      </Link>
     );
   };
 
   return (
     <>
-      <Helmet>
-        <title>Tanglome | Empowering Businesses with Technology</title>
-        <meta name="description" content="Innovative digital solutions and scalable software development." />
-      </Helmet>
+      <Helmet />
 
       <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6 }}
-        className={`fixed top-0 left-0 w-full z-[9998] transition-all duration-300 ease-in-out ${
-          scrolling 
-            ? "bg-gray-900/95 backdrop-blur-xl shadow-2xl border-b border-white/10" 
-            : "bg-transparent border-b border-transparent"
-        }`}
-        role="navigation"
+        initial={false}
+        animate={{
+          backgroundColor: scrolled ? "rgba(255, 255, 255, 0.95)" : "rgba(255, 255, 255, 1)",
+          boxShadow: scrolled ? "0 4px 20px rgba(0, 0, 0, 0.08)" : "none",
+          height: scrolled ? "70px" : "80px"
+        }}
+        transition={{ duration: 0.3 }}
+        className="fixed top-0 left-0 w-full z-[9999] backdrop-blur-xl border-b border-gray-100"
       >
-        <nav className="w-full flex justify-between items-center px-6 py-4 lg:px-8 lg:py-5">
-          {/* Logo */}
-          <Link to="/" onClick={() => setActiveItem("Home")} className="group">
-            <span className="text-2xl lg:text-3xl font-black">
-              Tanglome
-            </span>
-          </Link>
+        <div className="container mx-auto px-4 lg:px-8 flex justify-between items-center h-full">
 
-          {/* Desktop Menu */}
-          <ul className="hidden lg:flex items-center space-x-1">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link to="/" className="text-2xl font-black text-black">
+              TANGLOME
+            </Link>
+          </motion.div>
+
+          <nav className="hidden lg:flex items-center gap-2">
             {navItems.map((item) => (
-              <li key={item}>
-                <NavLink item={item} />
-              </li>
+              <NavLink key={item.name} item={item} />
             ))}
-            <motion.li whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          </nav>
+
+          <div className="hidden lg:flex items-center">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <Link
                 to="/schedule-meeting"
-                className="ml-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 flex items-center gap-2"
+                className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-[#A556F8] to-[#4922E5] text-white rounded-full hover:shadow-lg transition-all duration-300 font-semibold"
               >
-                <MdRocketLaunch className="text-lg" />
-                <span>Get Started</span>
+                Get Started <MdRocketLaunch className="animate-pulse" />
               </Link>
-            </motion.li>
-          </ul>
+            </motion.div>
+          </div>
 
-          {/* Mobile Menu Button */}
           <motion.button
-            onClick={() => setMenuOpen(!menuOpen)}
-            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="lg:hidden w-12 h-12 flex items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            className="lg:hidden p-2 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
+            onClick={() => setMenuOpen(!menuOpen)}
           >
-            {menuOpen ? <FaTimes /> : <FaBars />}
+            {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </motion.button>
-        </nav>
+        </div>
       </motion.header>
 
-      {/* Mobile Menu - Moved outside header to avoid stacking context issues */}
+      {/* Overlay */}
+      <div
+        className={`fixed inset-0 bg-black/40 z-[9990] lg:hidden ${
+          menuOpen ? "block" : "hidden"
+        }`}
+        onClick={() => setMenuOpen(false)}
+      />
+
+      {/* Drawer */}
       <AnimatePresence>
         {menuOpen && (
-          <>
-            <motion.div
-              variants={overlayVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] lg:hidden"
-              onClick={() => setMenuOpen(false)}
-            />
-            
-            <motion.div
-              variants={mobileMenuVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
-              transition={{ duration: 0.3 }}
-              className="fixed top-0 right-0 w-80 h-full bg-gray-900/95 backdrop-blur-xl border-l border-white/10 shadow-2xl z-[10000] lg:hidden overflow-y-auto"
-            >
-              <div className="flex justify-between items-center p-6 border-b border-white/10">
-                <span className="text-2xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
-                  Tanglome
-                </span>
-                <button
-                  onClick={() => setMenuOpen(false)}
-                  className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/10 text-white hover:bg-white/20"
-                  aria-label="Close menu"
-                >
-                  <FaTimes />
-                </button>
-              </div>
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed top-0 right-0 h-full w-[85%] max-w-[320px] bg-white z-[9991] shadow-2xl"
+          >
+            <div className="p-6 pt-24 space-y-2">
+              {navItems.map((item) => (
+                <MobileNavLink key={item.name} item={item} />
+              ))}
+            </div>
 
-              <div className="p-6">
-                <div className="flex flex-col space-y-2">
-                  {navItems.map((item, index) => (
-                    <div key={item} className="border-b border-white/5 last:border-b-0">
-                      <MobileNavItem item={item} index={index} />
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-white/10">
-                  <Link
-                    to="/schedule-meeting"
-                    onClick={() => setMenuOpen(false)}
-                    className="flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
-                  >
-                    <MdOutlineScheduleSend className="text-xl" />
-                    <span className="font-semibold">Schedule Meeting</span>
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </>
+            <div className="p-6 border-t border-gray-100">
+              <Link
+                to="/schedule-meeting"
+                className="w-full flex justify-center items-center gap-2 py-4 bg-gradient-to-r from-[#A556F8] to-[#4922E5] text-white rounded-xl font-semibold hover:shadow-lg transition-shadow"
+                onClick={() => setMenuOpen(false)}
+              >
+                Schedule Meeting <MdOutlineScheduleSend />
+              </Link>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

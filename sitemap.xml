@@ -2,73 +2,133 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://tanglome.com/</loc>
-        <lastmod>2025-10-05</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <priority>1.0</priority>
         <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://tanglome.com/about</loc>
-        <lastmod>2025-10-05</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tanglome.com/solutions</loc>
-        <lastmod>2025-10-05</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tanglome.com/products</loc>
-        <lastmod>2025-10-05</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tanglome.com/products/mobile-billing</loc>
-        <lastmod>2025-10-05</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.6</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tanglome.com/products/crm-consulting</loc>
-        <lastmod>2025-10-05</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.6</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tanglome.com/services</loc>
-        <lastmod>2025-10-05</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.9</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
+        <loc>https://tanglome.com/services/web-development</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://tanglome.com/services/app-development</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://tanglome.com/services/ai-solutions</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://tanglome.com/services/cloud-services</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://tanglome.com/services/digital-marketing</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://tanglome.com/services/whatsapp-automation</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://tanglome.com/services/mvp-development</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://tanglome.com/ourservices</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.8</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
         <loc>https://tanglome.com/contact</loc>
-        <lastmod>2025-10-05</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tanglome.com/schedule-meeting</loc>
-        <lastmod>2025-10-05</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tanglome.com/careers</loc>
-        <lastmod>2025-10-05</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
+        <loc>https://tanglome.com/team</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.6</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://tanglome.com/portfolio</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.6</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
         <loc>https://tanglome.com/sitemap</loc>
-        <lastmod>2025-10-05</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.3</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://tanglome.com/faq</loc>
-        <lastmod>2025-10-05</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.7</priority>
         <changefreq>weekly</changefreq>
     </url>

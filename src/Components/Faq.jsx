@@ -78,31 +78,14 @@ const Faq = () => {
     <>
     
 
-      {/* Animated Background */}
-      <div className="min-h-screen relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700  overflow-hidden">
-        {/* Floating Background Elements */}
-        <motion.div
-          className="absolute top-20 left-10 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.3, 0.2],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-10 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.3, 0.2, 0.3],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-          }}
-        />
+      {/* White Background with Subtle Elements */}
+      <div className="relative bg-white">
+        {/* Subtle Background Elements */}
+        <div className="absolute top-0 right-0 w-80 h-80 sm:w-96 sm:h-96 bg-gradient-to-bl from-[#A556F8]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 sm:w-96 sm:h-96 bg-gradient-to-tr from-[#4922E5]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none"></div>
 
         <div className="relative z-10 py-20 px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -116,21 +99,31 @@ const Faq = () => {
               variants={itemVariants}
               className="text-center mb-16"
             >
+              {/* Trust Badge */}
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#A556F8]/10 to-[#4922E5]/10 px-4 py-2 rounded-full border-2 border-[#A556F8]/20 shadow-sm mb-6">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span className="text-[#4922E5] font-semibold font-['Space Grotesk'] text-sm sm:text-base">
+                  Your Questions Answered
+                </span>
+              </div>
+
               <motion.h1
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#020202] leading-[1.1] mb-3 sm:mb-4"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                  Frequently Asked
+                <span className="block sm:inline">Frequently Asked</span>
+                <span className="block sm:inline">
+                  <span className="text-[#A556F8]"> Questions</span>
+                  <svg className="hidden sm:block absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 100 8" preserveAspectRatio="none">
+                    <path d="M0,4 Q25,0 50,4 T100,4" stroke="#A556F8" strokeWidth="3" fill="none" opacity="0.3"/>
+                  </svg>
                 </span>
-                <br />
-                <span className="text-white">Questions</span>
               </motion.h1>
               
               <motion.p
-                className="text-xl text-gray-300 max-w-2xl mx-auto"
+                className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed max-w-md sm:max-w-2xl mx-auto px-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
@@ -149,7 +142,7 @@ const Faq = () => {
                   {faqData.map((faq, index) => (
                     <motion.div
                       key={index}
-                      className="rounded-2xl overflow-hidden backdrop-blur-lg bg-white/5 border border-white/10"
+                      className="rounded-2xl overflow-hidden bg-white border-2 border-gray-100 hover:border-[#A556F8]/30 shadow-lg hover:shadow-2xl transition-all duration-500"
                       whileHover={{ scale: 1.02 }}
                       onHoverStart={() => setHoveredIndex(index)}
                       onHoverEnd={() => setHoveredIndex(null)}
@@ -157,21 +150,21 @@ const Faq = () => {
                     >
                       <motion.button
                         onClick={() => toggleFaq(index)}
-                        className="w-full flex items-center p-6 text-left font-semibold text-white hover:bg-white/5 transition-all duration-300"
+                        className="w-full flex items-center p-6 text-left font-semibold text-[#020202] hover:bg-[#A556F8]/5 transition-all duration-300"
                         whileHover={{ x: 5 }}
                       >
                         <motion.div
-                          className="flex-shrink-0 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4"
+                          className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#A556F8] to-[#4922E5] rounded-full flex items-center justify-center mr-4"
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.6 }}
                         >
                           {faq.icon}
                         </motion.div>
-                        <span className="text-lg pr-4 flex-1">{faq.question}</span>
+                        <span className="text-base sm:text-lg pr-4 flex-1">{faq.question}</span>
                         <motion.span
                           animate={{ rotate: openIndex === index ? 180 : 0 }}
                           transition={{ duration: 0.3 }}
-                          className="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-sm"
+                          className="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-[#A556F8] to-[#4922E5] rounded-full flex items-center justify-center text-white text-sm"
                         >
                           ▼
                         </motion.span>
@@ -190,9 +183,9 @@ const Faq = () => {
                               initial={{ opacity: 0, y: -10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: 0.2 }}
-                              className="p-6 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border-t border-white/10"
+                              className="p-6 bg-gradient-to-r from-[#A556F8]/5 to-[#4922E5]/5 border-t border-[#A556F8]/20"
                             >
-                              <p className="text-gray-200 text-lg leading-relaxed">
+                              <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                                 {faq.answer}
                               </p>
                             </motion.div>
@@ -212,51 +205,51 @@ const Faq = () => {
                 <div className="space-y-8">
                   {/* Key Benefits */}
                   <motion.div
-                    className="backdrop-blur-lg bg-white/5 rounded-2xl p-6 border border-white/10"
+                    className="bg-white rounded-2xl p-6 border-2 border-gray-100 hover:border-[#A556F8]/30 shadow-lg hover:shadow-2xl transition-all duration-500"
                     whileHover={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                      <FaAward className="mr-3 text-yellow-400" />
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#020202] mb-4 sm:mb-6 flex items-center">
+                      <FaAward className="mr-3 text-[#A556F8]" />
                       Why Choose Us?
                     </h3>
                     <div className="space-y-4">
                       {[
                         { 
-                          icon: <FaRocket className="text-purple-400" />, 
+                          icon: <FaRocket className="text-[#A556F8]" />, 
                           title: "Fast Delivery", 
                           desc: "Quick turnaround without compromising quality" 
                         },
                         { 
-                          icon: <FaUsers className="text-blue-400" />, 
+                          icon: <FaUsers className="text-[#4922E5]" />, 
                           title: "Expert Team", 
                           desc: "Seasoned professionals with diverse expertise" 
                         },
                         { 
-                          icon: <FaHeart className="text-pink-400" />, 
+                          icon: <FaHeart className="text-pink-500" />, 
                           title: "Client-Focused", 
                           desc: "Your success is our top priority" 
                         },
                         { 
-                          icon: <FaShieldAlt className="text-green-400" />, 
+                          icon: <FaShieldAlt className="text-green-500" />, 
                           title: "Quality Assurance", 
                           desc: "Rigorous testing and quality checks" 
                         },
                       ].map((benefit, index) => (
                         <motion.div
                           key={index}
-                          className="flex items-center space-x-4 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300"
+                          className="flex items-center space-x-4 p-3 rounded-lg bg-[#A556F8]/5 hover:bg-[#A556F8]/10 transition-all duration-300"
                           whileHover={{ scale: 1.03, x: 5 }}
                           initial={{ opacity: 0, x: 20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.5 + index * 0.1 }}
                         >
-                          <div className="flex-shrink-0 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
+                          <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#A556F8] to-[#4922E5] rounded-full flex items-center justify-center">
                             {benefit.icon}
                           </div>
                           <div className="flex-1">
-                            <h4 className="text-white font-semibold">{benefit.title}</h4>
-                            <p className="text-gray-400 text-sm">{benefit.desc}</p>
+                            <h4 className="text-[#020202] font-semibold text-sm sm:text-base">{benefit.title}</h4>
+                            <p className="text-gray-600 text-xs sm:text-sm">{benefit.desc}</p>
                           </div>
                         </motion.div>
                       ))}
@@ -276,49 +269,27 @@ const Faq = () => {
               variants={itemVariants}
               className="text-center mt-16"
             >
-              <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10">
-                <h3 className="text-2xl font-bold text-white mb-4">
+              <div className="bg-white rounded-2xl p-6 sm:p-8 border-2 border-gray-100 hover:border-[#A556F8]/30 shadow-lg hover:shadow-2xl transition-all duration-500">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#020202] mb-3 sm:mb-4">
                   Ready to start your project?
                 </h3>
-                <p className="text-gray-300 mb-6">
+                <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6 px-2">
                   Let's discuss how Tanglome can bring your ideas to life.
                 </p>
                 <motion.button
-                  className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg flex items-center space-x-2 mx-auto"
-                  whileHover={{ 
-                    scale: 1.05, 
-                    boxShadow: "0 10px 30px rgba(192, 132, 252, 0.4)",
-                  }}
+                  className="group relative overflow-hidden px-6 sm:px-8 py-4 sm:py-5 bg-gradient-to-r from-[#A556F8] to-[#4922E5] text-white font-bold rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] active:scale-95 flex items-center space-x-2 mx-auto"
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span>Get Started</span>
-                  <FaArrowRight />
+                  <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                  <span className="relative">Get Started</span>
+                  <FaArrowRight className="relative group-hover:translate-x-1 transition-transform duration-300" />
                 </motion.button>
               </div>
             </motion.div>
           </motion.div>
         </div>
 
-        {/* Floating Particles */}
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-white/30 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -100, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
       </div>
     </>
   );

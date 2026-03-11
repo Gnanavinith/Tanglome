@@ -11,13 +11,13 @@ const chatBubbles = [
 
 const ConnectUs = () => {
   return (
-   <section className="relative w-full h-auto bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 px-6 py-16 overflow-hidden flex flex-col items-center text-center">
+   <section className="relative w-full h-auto bg-white px-4 sm:px-6 py-12 sm:py-16 flex flex-col items-center text-center">
   {/* Section Title */}
   <motion.h1
     initial={{ opacity: 0, y: -20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1 }}
-    className="text-2xl sm:text-3xl font-extrabold text-gray-300"
+    className="text-2xl sm:text-3xl font-extrabold text-[#020202]"
   >
     Connect With Us
   </motion.h1>
@@ -27,8 +27,7 @@ const ConnectUs = () => {
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, delay: 0.3 }}
-    className="text-base sm:text-lg font-semibold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 
-    text-transparent bg-clip-text mt-4 leading-relaxed max-w-lg"
+    className="text-base sm:text-lg font-semibold text-[#4922E5] mt-4 leading-relaxed max-w-lg"
   >
     {/* Full text for larger screens */}
     <span className="hidden sm:block">
@@ -42,16 +41,20 @@ const ConnectUs = () => {
     </span>
   </motion.p>
 
+  {/* Subtle Background Elements */}
+  <div className="absolute top-0 right-0 w-40 h-40 sm:w-60 sm:h-60 bg-[#A556F8]/10 rounded-full blur-3xl pointer-events-none" />
+  <div className="absolute bottom-0 left-0 w-40 h-40 sm:w-60 sm:h-60 bg-[#4922E5]/10 rounded-full blur-3xl pointer-events-none" />
+
   {/* Animated Chat Bubbles */}
-  <div className="relative w-full justify-center mt-10 h-40 hidden sm:flex">
+  <div className="relative w-full justify-center mt-8 sm:mt-10 h-32 sm:h-40 flex items-center">
     {chatBubbles.map((text, index) => (
       <motion.div
         key={index}
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: [0, -10, 0] }}
+        animate={{ opacity: 1, y: [0, -8, 0] }}
         transition={{ duration: 3, repeat: Infinity, delay: index * 1.5 }}
-        className={`absolute bg-blue-700 text-white px-4 py-2 rounded-lg shadow-lg text-base sm:text-lg font-medium 
-          ${index === 0 ? "top-0 left-10" : index === 1 ? "top-1/2 right-10" : "bottom-0 left-20"}`}
+        className={`absolute bg-gradient-to-r from-[#A556F8] to-[#4922E5] text-white px-3 sm:px-4 py-2 rounded-lg shadow-lg text-sm sm:text-base font-medium 
+          ${index === 0 ? "top-0 left-4 sm:left-10" : index === 1 ? "top-1/2 right-4 sm:right-10" : "bottom-0 left-8 sm:left-20"}`}
       >
         {text}
       </motion.div>
@@ -65,7 +68,7 @@ const ConnectUs = () => {
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.1 }}
       transition={{ duration: 0.5 }}
-      className="mt-6 px-6 py-3 bg-blue-600 text-white text-base sm:text-lg font-bold rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-500 transition-all duration-300"
+      className="mt-6 px-5 sm:px-6 py-3 bg-gradient-to-r from-[#A556F8] to-[#4922E5] text-white text-base sm:text-lg font-bold rounded-full flex items-center gap-2 shadow-lg hover:opacity-90 transition-all duration-300"
     >
       Contact Us <MdKeyboardArrowRight className="text-xl" />
     </motion.button>

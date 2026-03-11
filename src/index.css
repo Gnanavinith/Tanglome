@@ -1,27 +1,183 @@
 @import "tailwindcss";
 @import '@fontsource/poppins';
 
+:root {
+  --primary-purple: #A556F8;
+  --secondary-purple: #4922E5;
+  --dark-bg: #020202;
+  --light-text: #FFFFFF;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #111827;
+  background-color: #020202;
+  color: #000000;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--primary-purple), var(--secondary-purple));
+  border-radius: 5px;
+  border: 2px solid var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(#b066ff, #5a32e8);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-purple) var(--dark-bg);
+}
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+section {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+img {
+  display: block;
+}
+
+/* Scroll animation removed as per redesign requirements */
+
+/* Global button styles */
+button {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Creative static UI elements */
+.gradient-border {
+  border: 2px solid transparent;
+  background: linear-gradient(45deg, var(--primary-purple), var(--secondary-purple)) border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* Static hover effects without animations */
+.hover-highlight:hover {
+  background-color: rgba(165, 86, 248, 0.1);
+}
+
+/* Creative layout elements */
+.creative-section {
+  position: relative;
+  padding: 2rem;
+  background: linear-gradient(135deg, #020202 0%, #1a0a2e 50%, #020202 100%);
+  border: 1px solid #4922E5;
+  box-shadow: 0 4px 20px rgba(73, 34, 229, 0.2);
+}
+
+/* Purple accent elements */
+.purple-accent {
+  color: var(--primary-purple);
+}
+
+/* Purple background elements */
+.purple-bg {
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+}
+
+/* Dark mode enhancements */
+.dark-card {
+  background-color: #0a0a0a;
+  border: 1px solid #333;
+}
+
+/* Static button styles */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  border: none;
   color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+.btn-primary:hover {
+  background: linear-gradient(135deg, #b066ff, #5a32e8);
 }
 
-.animate-scroll {
-  display: flex;
-  animation: scroll 25s linear infinite;
-  width: max-content;
-  min-width: 100%;
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--primary-purple);
+  color: var(--primary-purple);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
+.btn-secondary:hover {
+  background: rgba(165, 86, 248, 0.1);
+}
 
+/* Form elements with new color scheme */
+.form-input {
+  background-color: #0a0a0a;
+  border: 1px solid #4922E5;
+  color: #FFFFFF;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 3px rgba(165, 86, 248, 0.2);
+}
+
+/* Card styles */
+.card {
+  background-color: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: none;
+}
+
+/* Creative section dividers */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-purple), transparent);
+  margin: 2rem 0;
+}
+
+/* Static creative elements */
+.creative-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Link styles */
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

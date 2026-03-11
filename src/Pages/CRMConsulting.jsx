@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 import { Check, Star, Users, BarChart3, Shield, Zap, Rocket, Target, TrendingUp } from "lucide-react";
 
 const CRMConsulting = () => {
@@ -50,7 +51,16 @@ const CRMConsulting = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900 px-6 py-16 relative overflow-hidden">
+    <>
+      <Helmet>
+        <title>CRM Consulting India | Software Consulting CRM Tamil Nadu | Tanglome</title>
+        <meta name="description" content="CRM Consulting India. Professional software consulting CRM in Tamil Nadu. Client management system, project tracking software, lead management, and business automation solutions for software consulting firms. Enhance productivity and streamline operations." />
+        <meta name="keywords" content="CRM Consulting India, Software Consulting CRM India, Client Management System India, Project Tracking Software India, Lead Management Software India, Software Development CRM India, Consulting Firm Software India, CRM Solutions India, Business Automation Software India, Client Relationship Management India, Project Management System India, Employee Management System India, HR Management Software India, Invoice Management System India, Financial Management Software India, Analytics Dashboard India, CRM Development India, Custom CRM Solutions India, SaaS CRM India, Cloud CRM India, Enterprise CRM India, Business Management Software India, Customer Management System India, Sales Management System India, Opportunity Management India, Pipeline Management Software India, Task Management System India, Team Collaboration Software India, Workflow Management India, Document Management System India, Reporting Software India, Business Intelligence India, Data Analytics Software India, Client Portal Development India, CRM Integration India, API Development India, Mobile CRM India, Sales CRM India, Marketing CRM India, Customer Service Software India, Ticketing System India, SLA Management India, Performance Tracking Software India" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://tanglome.com/crm-consulting" />
+      </Helmet>
+      
+      <div className="min-h-screen bg-gray-900 px-6 py-16 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
@@ -212,7 +222,7 @@ const CRMConsulting = () => {
         </motion.div>
       </div>
     </div>
-  );
+  </>);
 };
 
 export default CRMConsulting;

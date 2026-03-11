@@ -1,20 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 const NotFound = () => {
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-gray-900 text-white text-center px-6">
-      
-      {/* Animated 404 Text */}
-      <motion.h1
-        initial={{ scale: 0.5, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="text-6xl font-bold text-yellow-400"
-      >
-        404
-      </motion.h1>
+    <React.Fragment>
+      <Helmet>
+        <title>404 Page Not Found | Tanglome - No 1 IT Company in India & Tamil Nadu</title>
+        <meta name="description" content="Page not found. Visit Tanglome - No 1 IT Company in India & Tamil Nadu for web development, app development, AI solutions, digital marketing, and more." />
+        <meta name="keywords" content="Tanglome, 404 page, page not found, web development India, app development India, AI solutions India, digital marketing India, IT services India, web development Tamil Nadu, app development Tamil Nadu, IT company India, IT company Tamil Nadu" />
+      </Helmet>
+      <div className="h-screen flex flex-col items-center justify-center bg-gray-900 text-white text-center px-6">
+        
+        {/* Animated 404 Text */}
+        <motion.h1
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="text-6xl font-bold text-yellow-400"
+        >
+          404
+        </motion.h1>
 
       {/* Error Message */}
       <motion.p
@@ -46,6 +53,7 @@ const NotFound = () => {
       </Link>
 
     </div>
+    </React.Fragment>
   );
 };
 

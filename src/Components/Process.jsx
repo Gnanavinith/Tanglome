@@ -1,32 +1,31 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { FaSearch, FaPencilRuler, FaRocket, FaCogs } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const steps = [
   {
-    icon: <FaSearch className="text-white text-base sm:text-lg" />,
+    icon: <FaSearch className="text-white text-lg sm:text-xl" />,
     time: "(0 TO 1 WEEK)",
     title: "User Research & Problem Definition",
     description:
       "Our product and design team collaborates with founders to refine the problem statement and understand user needs. We assist with interviews, journey mapping, and surveys to identify key pain points and opportunities.",
   },
   {
-    icon: <FaPencilRuler className="text-white text-base sm:text-lg" />,
+    icon: <FaPencilRuler className="text-white text-lg sm:text-xl" />,
     time: "(1 TO 2 WEEKS)",
     title: "Rapid Prototyping & Testing",
     description:
       "This phase focuses on idea generation, wireframing, testing, and rapid iteration to validate user-centered solutions before development.",
   },
   {
-    icon: <FaRocket className="text-white text-base sm:text-lg" />,
+    icon: <FaRocket className="text-white text-lg sm:text-xl" />,
     time: "(2 TO 4 WEEKS)",
     title: "Building the MVP",
     description:
       "We define the MVP scope, prioritize features, and build a functional version using best practices, No-Code tools, and modern APIs.",
   },
   {
-    icon: <FaCogs className="text-white text-base sm:text-lg" />,
+    icon: <FaCogs className="text-white text-lg sm:text-xl" />,
     time: "(6 TO 18 MONTHS)",
     title: "Scaling & Optimization",
     description:
@@ -36,228 +35,125 @@ const steps = [
 
 const Process = () => {
   return (
-    <div className="w-full min-h-screen bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 px-4 sm:px-6 py-16 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-20 -right-20 w-60 h-60 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse animation-delay-4000"></div>
-      </div>
+    <section className="w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-10 lg:px-10 text-gray-900 relative">
+      {/* Subtle Background Elements */}
+      <div className="absolute top-0 right-0 w-80 h-80 sm:w-96 sm:h-96 bg-gradient-to-bl from-[#A556F8]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 sm:w-96 sm:h-96 bg-gradient-to-tr from-[#4922E5]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none"></div>
 
       {/* Header Section */}
-      <div className="max-w-6xl mx-auto relative z-10">
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-10 mb-6 drop-shadow-2xl"
-        >
-          Tanglome's{" "}
-          <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-500 bg-clip-text text-transparent">
-            Proven Process
-          </span>
-        </motion.h1>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <p className="text-lg sm:text-xl md:text-2xl font-semibold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-transparent bg-clip-text leading-relaxed">
+      <div className="max-w-4xl mx-auto relative z-10">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          {/* Trust Badge */}
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#A556F8]/10 to-[#4922E5]/10 px-4 py-2 rounded-full border-2 border-[#A556F8]/20 shadow-sm mb-6">
+            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+            <span className="text-[#4922E5] font-semibold font-['Space Grotesk'] text-sm sm:text-base">
+              Proven Methodology
+            </span>
+          </div>
+      
+          {/* Headline */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#020202] leading-[1.1] mb-4">
+            Our{" "}
+            <span className="relative inline-block">
+              <span className="text-[#A556F8]">
+                Process
+              </span>
+              <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 100 8" preserveAspectRatio="none">
+                <path d="M0,4 Q25,0 50,4 T100,4" stroke="#A556F8" strokeWidth="3" fill="none" opacity="0.3"/>
+              </svg>
+            </span>
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
             Tanglome collaborates with founders to take products from idea to launch and scale — fast.
           </p>
-        </motion.div>
-
-        {/* Desktop Timeline */}
-        <div className="hidden lg:block mt-20 relative">
-          {/* Central Timeline */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 via-purple-400 to-pink-400 shadow-2xl"></div>
-          
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className={`relative flex items-center mb-20 ${
-                index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-              }`}
-            >
-              {/* Content Card */}
-              <motion.div
-                whileHover={{ 
-                  scale: 1.02,
-                  y: -5,
-                  transition: { duration: 0.3 }
-                }}
-                className={`w-5/12 ${
-                  index % 2 === 0 ? "pr-12" : "pl-12"
-                }`}
-              >
-                <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500">
-                  <motion.h2
-                    whileHover={{ scale: 1.05 }}
-                    className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent mb-3"
-                  >
-                    {step.title}
-                  </motion.h2>
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: index * 0.3 + 0.3 }}
-                    className="text-cyan-200 font-semibold text-lg mb-4"
-                  >
-                    {step.time}
-                  </motion.p>
-                  <p className="text-gray-200 text-lg leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Icon Node */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 z-20">
-                <motion.div
-                  whileHover={{ 
-                    scale: 1.2,
-                    rotate: 360,
-                    transition: { duration: 0.5 }
-                  }}
-                  animate={{ 
-                    y: [0, -15, 0],
-                    boxShadow: [
-                      "0 0 0px rgba(59, 130, 246, 0.5)",
-                      "0 0 30px rgba(59, 130, 246, 0.8)",
-                      "0 0 0px rgba(59, 130, 246, 0.5)"
-                    ]
-                  }}
-                  transition={{ 
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center shadow-2xl border-2 border-white/20"
-                >
-                  {step.icon}
-                </motion.div>
-              </div>
-
-              {/* Empty Space for alternating sides */}
-              <div className="w-5/12"></div>
-            </motion.div>
-          ))}
         </div>
 
-        {/* Mobile Timeline */}
-        <div className="block lg:hidden mt-12 relative">
-          {/* Vertical Timeline */}
-          <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 via-purple-400 to-pink-400 shadow-2xl"></div>
+        {/* Vertical Timeline */}
+        <div className="relative">
+          {/* Vertical Line - Hidden on mobile, visible on sm+ */}
+          <div className="hidden sm:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#A556F8] via-[#4922E5] to-[#A556F8] transform -translate-x-1/2"></div>
           
-          <div className="space-y-12 pl-16 sm:pl-20">
-            {steps.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="relative"
-              >
-                {/* Icon Node */}
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  animate={{ 
-                    y: [0, -8, 0],
-                    boxShadow: [
-                      "0 0 0px rgba(59, 130, 246, 0.5)",
-                      "0 0 20px rgba(59, 130, 246, 0.8)",
-                      "0 0 0px rgba(59, 130, 246, 0.5)"
-                    ]
-                  }}
-                  transition={{ 
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="absolute -left-14 sm:-left-16 top-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center shadow-xl border-2 border-white/20 z-10"
-                >
-                  {step.icon}
-                </motion.div>
+          {/* Mobile Line - Visible only on mobile */}
+          <div className="sm:hidden absolute left-[3.5rem] top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#A556F8] via-[#4922E5] to-[#A556F8]"></div>
 
+          {/* Timeline Steps */}
+          <div className="space-y-8 sm:space-y-12 md:space-y-16">
+            {steps.map((step, index) => (
+              <div
+                key={index}
+                className={`relative flex items-start gap-4 sm:gap-8 ${
+                  index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'
+                }`}
+              >
                 {/* Content Card */}
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 shadow-2xl"
-                >
-                  <h2 className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent mb-3">
-                    {step.title}
-                  </h2>
-                  <p className="text-cyan-200 font-semibold text-base mb-4">
-                    {step.time}
-                  </p>
-                  <p className="text-gray-200 text-base leading-relaxed">
-                    {step.description}
-                  </p>
-                </motion.div>
-              </motion.div>
+                <div className={`flex-1 ${index % 2 === 0 ? 'sm:text-right' : 'sm:text-left'}`}>
+                  <div className="sm:max-w-md sm:ml-auto sm:mr-auto">
+                    <div className="bg-white rounded-2xl border-2 border-gray-100 hover:border-[#A556F8]/30 shadow-lg hover:shadow-2xl p-6 transition-all duration-500 hover:-translate-y-1">
+                      {/* Time Badge */}
+                      <div className={`inline-block bg-[#A556F8]/10 px-3 py-1 rounded-full mb-3 ${index % 2 === 0 ? 'sm:float-right sm:ml-2' : 'sm:float-left sm:mr-2'}`}>
+                        <span className="text-[#4922E5] font-semibold text-xs sm:text-sm">
+                          {step.time}
+                        </span>
+                      </div>
+                      
+                      {/* Title */}
+                      <h3 className="text-xl sm:text-2xl font-extrabold text-[#020202] mb-3 clear-both">
+                        {step.title}
+                      </h3>
+                      
+                      {/* Description */}
+                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                        {step.description}
+                      </p>
+
+                      {/* Decorative Bottom Border */}
+                      <div className={`h-1 w-16 bg-gradient-to-r from-[#A556F8] to-[#4922E5] rounded-full mt-4 ${index % 2 === 0 ? 'sm:ml-auto' : ''}`}></div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Center Icon */}
+                <div className="relative flex-shrink-0">
+                  {/* Icon Circle */}
+                  <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-r from-[#A556F8] to-[#4922E5] flex items-center justify-center shadow-xl border-4 border-white relative z-10 hover:scale-110 transition-transform duration-300">
+                    {step.icon}
+                  </div>
+                  
+                  {/* Step Number Badge */}
+                  <div className="absolute -bottom-2 -right-2 w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center shadow-md border-2 border-[#A556F8]/20">
+                    <span className="text-[#A556F8] font-bold text-xs sm:text-sm">{index + 1}</span>
+                  </div>
+                </div>
+
+                {/* Spacer for alternating layout on desktop */}
+                <div className="hidden sm:block flex-1"></div>
+              </div>
             ))}
           </div>
         </div>
 
         {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-20 bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-lg border border-cyan-400/30 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden"
-        >
-          {/* Background Elements */}
-          <div className="absolute -top-20 -right-20 w-40 h-40 bg-yellow-400 rounded-full blur-3xl opacity-10"></div>
-          <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-cyan-400 rounded-full blur-3xl opacity-10"></div>
-          
-          <div className="relative z-10">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-2xl sm:text-3xl font-bold text-white mb-4"
-            >
-              Need Something More Specific?
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-lg sm:text-xl text-gray-200 mb-8 max-w-2xl mx-auto"
-            >
-              Sometimes your project may require a developer with a particular blend of skills.
-              Contact us today to learn more about how we can help you succeed.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <Link to="/schedule-meeting">
-                <motion.button
-                  whileHover={{ 
-                    scale: 1.05,
-                    boxShadow: "0 10px 30px -10px rgba(59, 130, 246, 0.5)"
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-2xl hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 shadow-2xl"
-                >
-                  Schedule a Call
-                </motion.button>
-              </Link>
-            </motion.div>
-          </div>
-        </motion.div>
+        <div className="text-center mt-16 sm:mt-20">
+          <Link to="/schedule-meeting" className="inline-block">
+            <button className="group relative overflow-hidden px-6 sm:px-8 py-4 sm:py-5 bg-gradient-to-r from-[#A556F8] to-[#4922E5] text-white font-bold rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] active:scale-95">
+              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              <span className="relative flex items-center justify-center gap-3">
+                <span className="text-base sm:text-lg">Start Your Project</span>
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </span>
+            </button>
+          </Link>
+          <p className="text-sm sm:text-base text-gray-600 mt-4 max-w-md mx-auto">
+            Ready to transform your ideas into reality? Let's discuss your project.
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

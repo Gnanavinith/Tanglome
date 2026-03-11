@@ -3,10 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { Helmet } from "react-helmet";
 import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { 
-  Sparkles, 
-  TrendingUp, 
-  Users, 
+import {
+  TrendingUp,
+  Users,
   Heart,
   Zap,
   ArrowRight,
@@ -17,20 +16,24 @@ import {
   MapPin,
   Clock,
   Award,
-  Building,
   Rocket,
   Star,
   Target,
-  Calendar,
-  Briefcase,
   GraduationCap,
-  DollarSign
+  DollarSign,
+  Building2,
+  Briefcase,
+  TrendingDown,
+  BarChart3,
+  Globe,
+  Lightbulb,
+  Coffee,
+  Code
 } from 'lucide-react';
 
 const Careers = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const [activeJob, setActiveJob] = useState(0);
 
   const salesJob = {
     title: "Sales Executive",
@@ -139,10 +142,9 @@ const Careers = () => {
     {
       title: "Sales Executive",
       icon: TrendingUp,
-      gradient: "from-pink-500 to-rose-500",
       description: salesJob.description,
       skills: salesJob.requirements,
-      type: `${salesJob.type} • ${salesJob.location}`,
+      type: salesJob.type,
       urgent: salesJob.urgent,
       experience: salesJob.experience,
       salary: salesJob.salary,
@@ -153,52 +155,54 @@ const Careers = () => {
   ];
 
   const companyStats = [
-    { number: "50+", label: "Projects Completed", icon: Rocket },
-    { number: "25+", label: "Happy Clients", icon: Heart },
-    { number: "15+", label: "Team Members", icon: Users },
-    { number: "3+", label: "Years Experience", icon: Award }
+    { number: "50+", label: "Projects Delivered", icon: Rocket, detail: "Across all services" },
+    { number: "25+", label: "Happy Clients", icon: Heart, detail: "And growing" },
+    { number: "15+", label: "Team Members", icon: Users, detail: "Talented professionals" },
+    { number: "3+", label: "Years Experience", icon: Award, detail: "In the industry" }
   ];
 
   const cultureFeatures = [
     {
-      icon: Zap,
+      icon: Lightbulb,
       title: "Innovation First",
-      description: "Work with cutting-edge technologies and modern development practices",
-      color: "from-yellow-400 to-orange-500"
+      description: "Work with cutting-edge technologies and modern development practices that push boundaries"
     },
     {
       icon: Users,
       title: "Collaborative Team",
-      description: "Join a supportive team that values collaboration and knowledge sharing",
-      color: "from-blue-400 to-cyan-500"
+      description: "Join a supportive team that values collaboration, knowledge sharing, and mutual growth"
     },
     {
-      icon: Heart,
+      icon: Coffee,
       title: "Work-Life Balance",
-      description: "Flexible hours and remote work options for optimal work-life balance",
-      color: "from-pink-400 to-rose-500"
+      description: "Flexible hours and remote work options to maintain a healthy work-life balance"
     },
     {
       icon: Target,
       title: "Growth Focused",
-      description: "Continuous learning opportunities and career advancement paths",
-      color: "from-green-400 to-emerald-500"
+      description: "Continuous learning opportunities, mentorship, and clear career advancement paths"
     }
+  ];
+
+  const perks = [
+    { icon: DollarSign, title: "Competitive Salary", description: "Market-leading compensation packages" },
+    { icon: Heart, title: "Health Benefits", description: "Comprehensive health insurance coverage" },
+    { icon: GraduationCap, title: "Learning Budget", description: "Annual budget for courses and conferences" },
+    { icon: Clock, title: "Flexible Hours", description: "Work when you're most productive" },
+    { icon: Globe, title: "Remote Options", description: "Hybrid and remote work possibilities" },
+    { icon: Award, title: "Performance Bonus", description: "Rewarding excellence and achievement" }
   ];
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 flex items-center justify-center">
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center"
         >
-          <div className="relative">
-            <div className="animate-spin rounded-full h-16 w-16 border-4 border-transparent border-t-cyan-400 border-r-pink-400"></div>
-            <div className="absolute inset-0 animate-ping rounded-full h-16 w-16 border-4 border-cyan-400 opacity-20"></div>
-          </div>
-          <p className="text-gray-400 mt-4">Loading Careers...</p>
+          <div className="w-12 h-12 border-4 border-slate-200 border-t-slate-900 rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-slate-600 font-medium">Loading careers...</p>
         </motion.div>
       </div>
     );
@@ -207,98 +211,126 @@ const Careers = () => {
   return (
     <>
       <Helmet>
-        <title>Careers - Join Tanglome Team</title>
-        <meta name="description" content="Join Tanglome and be part of a dynamic team. We are hiring Sales Executives, Web Developers, App Developers, Software Developers. Apply now!" />
-        <meta name="keywords" content="Careers, Tanglome Jobs, Sales Executive Jobs, Web Developer, App Developer, Software Developer, Apply Online" />
-        <meta name="author" content="Tanglome" />
-        <meta property="og:title" content="Careers - Join Tanglome Team" />
-        <meta property="og:description" content="We are hiring! Join Tanglome and start your career with us." />
-        <meta property="og:url" content="https://tanglome.com/careers" />
-        <meta property="og:image" content="https://tanglome.com/careers-preview-image.png" />
-        <meta name="twitter:title" content="Careers at Tanglome" />
-        <meta name="twitter:description" content="Join Tanglome team - Sales Executives, Web Developers, App Developers, Software Developers." />
+        <title>Careers | Tanglome - No 1 IT Company in India & Tamil Nadu | Join Our Team</title>
+        <meta name="description" content="Careers at Tanglome - No 1 IT Company in India & Tamil Nadu. Join our dynamic team. We are hiring Sales Executives, Web Developers, App Developers, AI Engineers, Cloud Architects, Digital Marketing Specialists. Apply now for exciting opportunities!" />
+        <meta name="keywords" content="Tanglome careers, Tanglome jobs, Tanglome employment, Tanglome openings, IT jobs India, software jobs Tamil Nadu, web developer jobs India, mobile app developer jobs, AI engineer jobs, cloud architect jobs, digital marketing jobs, SEO specialist jobs, software engineer jobs, IT company jobs India, tech jobs Coimbatore, software developer jobs India, freshers jobs India, experienced professionals jobs, remote jobs India, hybrid work jobs, full stack developer jobs, frontend developer jobs, backend developer jobs, React developer jobs, Node.js developer jobs, Python developer jobs, Java developer jobs, mobile app developer jobs, Android developer jobs, iOS developer jobs, Flutter developer jobs, React Native developer jobs, UI UX designer jobs, graphic designer jobs, digital marketing specialist jobs, SEO jobs, SEM jobs, social media marketing jobs, content writer jobs, sales executive jobs, business development jobs, project manager jobs, scrum master jobs, devops engineer jobs, database administrator jobs, system administrator jobs, cybersecurity specialist jobs, data scientist jobs, machine learning engineer jobs, AI developer jobs, cloud engineer jobs, AWS architect jobs, software testing jobs, QA engineer jobs, product manager jobs, technical consultant jobs, IT consulting jobs, software solutions jobs, startup jobs India, tech startup jobs, SaaS jobs India, e-commerce jobs India, fintech jobs India, healthtech jobs India" />
       </Helmet>
 
-      <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full blur-3xl opacity-20 animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-500 rounded-full blur-3xl opacity-10 animate-pulse delay-500"></div>
-        </div>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        
+        * {
+          font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+          font-family: 'Crimson Pro', Georgia, serif;
+        }
+        
+        .font-mono {
+          font-family: 'JetBrains Mono', 'Courier New', monospace;
+        }
+      `}</style>
 
-        <div className="relative z-10">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+        {/* Navigation Bar */}
+        <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-lg border-b border-slate-200 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <div className="text-2xl font-bold text-slate-900">
+                Tanglome
+              </div>
+              <div className="flex items-center gap-6">
+                <a href="/" className="text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                  Home
+                </a>
+                <a href="/portfolio" className="text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                  Portfolio
+                </a>
+                <button
+                  onClick={() => setShowForm(true)}
+                  className="bg-slate-900 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors"
+                >
+                  Apply Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <div className="relative">
           {!showForm ? (
             <>
               {/* Hero Section */}
-              <section className="px-6 py-20">
-                <div className="max-w-6xl mx-auto">
+              <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto">
                   <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center mb-16"
+                    transition={{ duration: 0.6 }}
+                    className="max-w-4xl"
                   >
-                   
-
-                    <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-pink-200 text-transparent bg-clip-text">
-                      Join Our Team
-                    </h1>
-                    <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
-                      Build your career with Tanglome and be part of innovative solutions that shape the future of technology. 
-                      We're looking for passionate individuals ready to make an impact.
-                    </p>
+                    <div className="inline-flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-full mb-6">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                      <span className="text-sm font-medium text-slate-700">We're hiring</span>
+                    </div>
                     
-                    <motion.div
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1, delay: 0.6 }}
-                      className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                    >
+                    <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-slate-900 mb-6 leading-[0.95]">
+                      Build Your Career
+                      <br />
+                      <span className="text-slate-400">With Us.</span>
+                    </h1>
+                    
+                    <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl">
+                      Join a team where innovation meets execution. We're building exceptional digital 
+                      solutions and looking for talented individuals to grow with us.
+                    </p>
+
+                    <div className="flex flex-wrap gap-4">
                       <motion.button
                         onClick={() => setShowForm(true)}
-                        className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/30"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        className="group inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-lg font-medium hover:bg-slate-800 transition-all"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
                       >
-                        <span className="relative z-10 flex items-center gap-2">
-                          Apply Now
-                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </span>
+                        Apply Now
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </motion.button>
+                      
                       <motion.button
                         onClick={() => document.getElementById('open-positions').scrollIntoView({ behavior: 'smooth' })}
-                        className="group relative bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-bold py-4 px-8 rounded-2xl text-lg border border-white/20 transition-all duration-300"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center gap-2 border-2 border-slate-900 text-slate-900 px-8 py-4 rounded-lg font-medium hover:bg-slate-900 hover:text-white transition-all"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
                       >
-                        View Open Positions
+                        View Openings
                       </motion.button>
-                    </motion.div>
+                    </div>
                   </motion.div>
 
                   {/* Company Stats */}
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-20"
                   >
                     {companyStats.map((stat, index) => {
-                      const IconComponent = stat.icon;
+                      const Icon = stat.icon;
                       return (
                         <motion.div
                           key={stat.label}
-                          initial={{ opacity: 0, scale: 0.8 }}
+                          initial={{ opacity: 0, scale: 0.9 }}
                           animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                          className="text-center group"
+                          transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                          className="bg-white border-2 border-slate-200 rounded-2xl p-6 hover:border-slate-900 hover:shadow-lg transition-all"
                         >
-                          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                            <IconComponent className="w-8 h-8 text-white" />
+                          <div className="bg-slate-100 p-3 rounded-xl inline-flex mb-4">
+                            <Icon className="w-6 h-6 text-slate-900" />
                           </div>
-                          <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
-                          <div className="text-gray-400 text-sm">{stat.label}</div>
+                          <div className="text-4xl font-bold text-slate-900 mb-2 font-mono">{stat.number}</div>
+                          <div className="text-sm font-semibold text-slate-900 mb-1">{stat.label}</div>
+                          <div className="text-xs text-slate-500">{stat.detail}</div>
                         </motion.div>
                       );
                     })}
@@ -306,73 +338,99 @@ const Careers = () => {
                 </div>
               </section>
 
-              {/* Open Positions Section */}
-              <section id="open-positions" className="px-6 py-16">
-                <div className="max-w-6xl mx-auto">
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center mb-12"
-                  >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text">
+              {/* Culture Section */}
+              <section className="py-20 bg-slate-900">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="text-center mb-16">
+                    <h2 className="text-5xl sm:text-6xl font-bold text-white mb-4">
+                      Why Tanglome?
+                    </h2>
+                    <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+                      We're building more than software—we're creating an environment where talent thrives
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {cultureFeatures.map((feature, index) => {
+                      const Icon = feature.icon;
+                      return (
+                        <motion.div
+                          key={feature.title}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.4, delay: index * 0.1 }}
+                          className="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:bg-slate-750 transition-all"
+                        >
+                          <div className="bg-white/10 p-3 rounded-xl inline-flex mb-4">
+                            <Icon className="w-6 h-6 text-white" />
+                          </div>
+                          <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
+                          <p className="text-slate-300 leading-relaxed text-sm">{feature.description}</p>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </section>
+
+              {/* Open Positions */}
+              <section id="open-positions" className="py-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="text-center mb-16">
+                    <h2 className="text-5xl sm:text-6xl font-bold text-slate-900 mb-4">
                       Open Positions
                     </h2>
-                    <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                      Explore our current openings and find the perfect role for your skills and ambitions.
+                    <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                      Find your next opportunity and join our growing team
                     </p>
-                  </motion.div>
+                  </div>
 
-                  {/* Job Cards */}
-                  <div className="space-y-8">
+                  <div className="space-y-6">
                     {jobPositions.map((job, index) => {
-                      const IconComponent = job.icon;
+                      const Icon = job.icon;
                       return (
                         <motion.div
                           key={job.title}
-                          initial={{ opacity: 0, x: -50 }}
-                          whileInView={{ opacity: 1, x: 0 }}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
-                          transition={{ duration: 0.6, delay: index * 0.2 }}
-                          className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-700 hover:border-purple-500/50 transition-all duration-500 overflow-hidden"
+                          transition={{ duration: 0.5 }}
+                          className="group bg-white border-2 border-slate-200 rounded-2xl overflow-hidden hover:border-slate-900 hover:shadow-xl transition-all"
                         >
-                          {/* Background Glow */}
-                          <div className={`absolute inset-0 bg-gradient-to-r ${job.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                          
-                          <div className="relative z-10">
+                          <div className="p-8">
                             {/* Header */}
                             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
                               <div className="flex items-start gap-4">
-                                <div className={`p-4 bg-gradient-to-r ${job.gradient} rounded-2xl group-hover:scale-110 transition-transform duration-300`}>
-                                  <IconComponent className="w-8 h-8 text-white" />
+                                <div className="bg-slate-900 p-4 rounded-xl">
+                                  <Icon className="w-8 h-8 text-white" />
                                 </div>
                                 <div>
-                                  <div className="flex items-center gap-3 mb-2">
-                                    <h3 className="text-3xl font-bold text-white">{job.title}</h3>
+                                  <div className="flex items-center gap-3 mb-3">
+                                    <h3 className="text-3xl font-bold text-slate-900">{job.title}</h3>
                                     {job.urgent && (
-                                      <span className="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold animate-pulse">
+                                      <span className="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-bold">
                                         URGENT HIRING
                                       </span>
                                     )}
                                   </div>
-                                  <div className="flex flex-wrap gap-4 text-gray-400">
+                                  <div className="flex flex-wrap gap-4 text-slate-600 text-sm">
                                     <div className="flex items-center gap-2">
                                       <MapPin className="w-4 h-4" />
-                                      <span>{job.location}</span>
+                                      <span className="font-medium">{job.location}</span>
                                     </div>
                                     <div className="flex items-center gap-2">
                                       <Clock className="w-4 h-4" />
-                                      <span>{job.type}</span>
+                                      <span className="font-medium">{job.type}</span>
                                     </div>
                                     <div className="flex items-center gap-2">
                                       <GraduationCap className="w-4 h-4" />
-                                      <span>{job.experience}</span>
+                                      <span className="font-medium">{job.experience}</span>
                                     </div>
                                     {job.salary && (
                                       <div className="flex items-center gap-2">
                                         <DollarSign className="w-4 h-4" />
-                                        <span>{job.salary}</span>
+                                        <span className="font-medium">{job.salary}</span>
                                       </div>
                                     )}
                                   </div>
@@ -383,31 +441,31 @@ const Careers = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => setShowForm(true)}
-                                className="group/btn bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center gap-2"
+                                className="bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 px-6 rounded-lg transition-all inline-flex items-center gap-2"
                               >
                                 Apply Now
-                                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                <ArrowRight className="w-4 h-4" />
                               </motion.button>
                             </div>
 
                             {/* Description */}
-                            <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                            <p className="text-slate-600 leading-relaxed mb-8">
                               {job.description}
                             </p>
 
                             {/* Requirements & Benefits Grid */}
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                               {/* Requirements */}
                               <div>
-                                <h4 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
-                                  <Target className="w-5 h-5 text-cyan-400" />
+                                <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                  <Target className="w-5 h-5" />
                                   Key Requirements
                                 </h4>
                                 <div className="space-y-2">
-                                  {job.skills.map((skill, skillIndex) => (
-                                    <div key={skillIndex} className="flex items-center gap-3 text-gray-300">
-                                      <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                                      {skill}
+                                  {job.skills.map((skill, idx) => (
+                                    <div key={idx} className="flex items-start gap-3 text-slate-700">
+                                      <div className="w-1.5 h-1.5 bg-slate-900 rounded-full mt-2 flex-shrink-0" />
+                                      <span className="text-sm">{skill}</span>
                                     </div>
                                   ))}
                                 </div>
@@ -416,15 +474,15 @@ const Careers = () => {
                               {/* Benefits */}
                               {job.benefits && (
                                 <div>
-                                  <h4 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
-                                    <Award className="w-5 h-5 text-purple-400" />
+                                  <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                    <Award className="w-5 h-5" />
                                     Benefits & Perks
                                   </h4>
                                   <div className="space-y-2">
-                                    {job.benefits.map((benefit, benefitIndex) => (
-                                      <div key={benefitIndex} className="flex items-center gap-3 text-gray-300">
-                                        <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                                        {benefit}
+                                    {job.benefits.map((benefit, idx) => (
+                                      <div key={idx} className="flex items-start gap-3 text-slate-700">
+                                        <div className="w-1.5 h-1.5 bg-slate-900 rounded-full mt-2 flex-shrink-0" />
+                                        <span className="text-sm">{benefit}</span>
                                       </div>
                                     ))}
                                   </div>
@@ -439,41 +497,35 @@ const Careers = () => {
                 </div>
               </section>
 
-              {/* Culture & Benefits Section */}
-              <section className="px-6 py-20">
-                <div className="max-w-6xl mx-auto">
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center mb-16"
-                  >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-orange-400 text-transparent bg-clip-text">
-                      Why Choose Tanglome?
+              {/* Perks & Benefits */}
+              <section className="py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="text-center mb-16">
+                    <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
+                      Perks & Benefits
                     </h2>
-                    <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                      We're building more than just software - we're building an amazing workplace culture.
+                    <p className="text-xl text-slate-600">
+                      We invest in our team's success and well-being
                     </p>
-                  </motion.div>
+                  </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {cultureFeatures.map((feature, index) => {
-                      const IconComponent = feature.icon;
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {perks.map((perk, index) => {
+                      const Icon = perk.icon;
                       return (
                         <motion.div
-                          key={feature.title}
-                          initial={{ opacity: 0, scale: 0.8 }}
+                          key={perk.title}
+                          initial={{ opacity: 0, scale: 0.9 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
-                          className="group p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-700 hover:border-gray-600 transition-all duration-500 text-center"
+                          transition={{ duration: 0.4, delay: index * 0.05 }}
+                          className="bg-slate-50 border border-slate-200 rounded-xl p-6 hover:bg-slate-100 transition-all"
                         >
-                          <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${feature.color} rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                            <IconComponent className="w-8 h-8 text-white" />
+                          <div className="bg-slate-900 p-3 rounded-lg inline-flex mb-4">
+                            <Icon className="w-5 h-5 text-white" />
                           </div>
-                          <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                          <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                          <h3 className="text-lg font-bold text-slate-900 mb-2">{perk.title}</h3>
+                          <p className="text-sm text-slate-600">{perk.description}</p>
                         </motion.div>
                       );
                     })}
@@ -483,24 +535,32 @@ const Careers = () => {
             </>
           ) : (
             /* Application Form */
-            <section className="px-6 py-16">
+            <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
               <div className="max-w-2xl mx-auto">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-gray-700"
+                  className="bg-white border-2 border-slate-200 rounded-2xl p-8 md:p-12 shadow-lg"
                 >
                   {/* Form Header */}
-                  <div className="text-center mb-8">
-                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl mb-6">
-                      <Send className="w-10 h-10 text-white" />
+                  <div className="mb-8">
+                    <button
+                      onClick={() => setShowForm(false)}
+                      className="text-slate-600 hover:text-slate-900 font-medium mb-6 inline-flex items-center gap-2"
+                    >
+                      <ArrowRight className="w-4 h-4 rotate-180" />
+                      Back to Careers
+                    </button>
+                    
+                    <div className="bg-slate-900 p-4 rounded-xl inline-flex mb-6">
+                      <Send className="w-8 h-8 text-white" />
                     </div>
-                    <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                    <h2 className="text-4xl font-bold text-slate-900 mb-3">
                       Apply Now
                     </h2>
-                    <p className="text-gray-300 text-lg">
-                      Ready to join our amazing team? Let's get started!
+                    <p className="text-slate-600 text-lg">
+                      Ready to join our team? Fill out the form below and we'll get back to you soon.
                     </p>
                   </div>
 
@@ -508,24 +568,24 @@ const Careers = () => {
                     {submitted ? (
                       <motion.div
                         key="success"
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
                         className="text-center py-12"
                       >
-                        <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl mb-6">
-                          <CheckCircle2 className="w-10 h-10 text-white" />
+                        <div className="bg-green-100 p-4 rounded-xl inline-flex mb-6">
+                          <CheckCircle2 className="w-12 h-12 text-green-600" />
                         </div>
-                        <h3 className="text-2xl font-bold text-green-400 mb-4">Application Submitted!</h3>
-                        <p className="text-gray-300 mb-8">
-                          Thank you for your interest! We'll review your application and get back to you soon.
+                        <h3 className="text-2xl font-bold text-slate-900 mb-3">Application Submitted!</h3>
+                        <p className="text-slate-600 mb-8 max-w-md mx-auto">
+                          Thank you for your interest in joining Tanglome. We'll review your application and contact you soon.
                         </p>
                         <motion.button
                           onClick={() => {
                             setSubmitted(false);
                             setShowForm(false);
                           }}
-                          className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300"
+                          className="bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 px-8 rounded-lg transition-all"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
@@ -535,39 +595,42 @@ const Careers = () => {
                     ) : (
                       <motion.form
                         key="form"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                         onSubmit={handleSubmit}
-                        className="space-y-6"
+                        className="space-y-5"
                       >
                         {[
-                          { label: "Your Full Name", value: name, onChange: setName, error: errors.name, type: "text" },
-                          { label: "Your Phone Number", value: mobile, onChange: setMobile, error: errors.mobile, type: "tel" },
-                          { label: "Your Email Address", value: email, onChange: setEmail, error: errors.email, type: "email" },
-                          { label: "Position you're applying for", value: role, onChange: setRole, error: errors.role, type: "text" },
-                          { label: "Resume / Portfolio Link", value: resumeLink, onChange: setResumeLink, error: errors.resumeLink, type: "url" }
+                          { label: "Full Name", value: name, onChange: setName, error: errors.name, type: "text", placeholder: "John Doe" },
+                          { label: "Phone Number", value: mobile, onChange: setMobile, error: errors.mobile, type: "tel", placeholder: "+91 98765 43210" },
+                          { label: "Email Address", value: email, onChange: setEmail, error: errors.email, type: "email", placeholder: "john@example.com" },
+                          { label: "Position", value: role, onChange: setRole, error: errors.role, type: "text", placeholder: "Sales Executive" },
+                          { label: "Resume / Portfolio Link", value: resumeLink, onChange: setResumeLink, error: errors.resumeLink, type: "url", placeholder: "https://drive.google.com/..." }
                         ].map((field, index) => (
                           <motion.div
                             key={field.label}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.05 }}
                           >
+                            <label className="block text-sm font-semibold text-slate-900 mb-2">
+                              {field.label}
+                            </label>
                             <input
                               type={field.type}
-                              placeholder={field.label}
+                              placeholder={field.placeholder}
                               value={field.value}
                               onChange={(e) => field.onChange(field.type === 'tel' ? e.target.value.replace(/\D/g, '') : e.target.value)}
-                              className={`w-full p-4 rounded-xl bg-gray-700/50 text-white placeholder-gray-400 border-2 ${
-                                field.error ? 'border-red-500' : 'border-gray-600'
-                              } focus:border-cyan-500 focus:outline-none transition-all duration-300`}
+                              className={`w-full px-4 py-3 rounded-lg bg-slate-50 text-slate-900 border-2 ${
+                                field.error ? 'border-red-500' : 'border-slate-200'
+                              } focus:border-slate-900 focus:outline-none transition-all`}
                             />
                             {field.error && (
                               <motion.p
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
-                                className="text-red-400 text-sm mt-2 flex items-center gap-2"
+                                className="text-red-600 text-sm mt-2 flex items-center gap-2"
                               >
                                 <X className="w-4 h-4" />
                                 {field.error}
@@ -576,42 +639,25 @@ const Careers = () => {
                           </motion.div>
                         ))}
 
-                        {/* Submit Buttons */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.5 }}
-                          className="flex gap-4 pt-4"
+                        <motion.button
+                          type="submit"
+                          disabled={submitting}
+                          className="w-full bg-slate-900 hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-lg transition-all flex items-center justify-center gap-3 mt-8"
+                          whileHover={{ scale: submitting ? 1 : 1.02 }}
+                          whileTap={{ scale: 0.98 }}
                         >
-                          <motion.button
-                            type="button"
-                            onClick={() => setShowForm(false)}
-                            className="flex-1 bg-gray-600/50 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                          >
-                            Back
-                          </motion.button>
-                          <motion.button
-                            type="submit"
-                            disabled={submitting}
-                            className="flex-1 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-3"
-                            whileHover={{ scale: submitting ? 1 : 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                          >
-                            {submitting ? (
-                              <>
-                                <Loader className="w-5 h-5 animate-spin" />
-                                Submitting...
-                              </>
-                            ) : (
-                              <>
-                                Submit Application
-                                <Send className="w-5 h-5" />
-                              </>
-                            )}
-                          </motion.button>
-                        </motion.div>
+                          {submitting ? (
+                            <>
+                              <Loader className="w-5 h-5 animate-spin" />
+                              Submitting...
+                            </>
+                          ) : (
+                            <>
+                              Submit Application
+                              <Send className="w-5 h-5" />
+                            </>
+                          )}
+                        </motion.button>
                       </motion.form>
                     )}
                   </AnimatePresence>
@@ -620,6 +666,40 @@ const Careers = () => {
             </section>
           )}
         </div>
+
+        {/* Footer */}
+        <footer className="border-t border-slate-200 bg-white py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="text-2xl font-bold text-slate-900">
+                Tanglome
+              </div>
+              
+              <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-600">
+                <span className="flex items-center gap-2">
+                  <Code className="w-4 h-4" />
+                  Web Development
+                </span>
+                <span className="flex items-center gap-2">
+                  <BarChart3 className="w-4 h-4" />
+                  SEO Services
+                </span>
+                <span className="flex items-center gap-2">
+                  <Zap className="w-4 h-4" />
+                  SaaS Solutions
+                </span>
+                <span className="flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4" />
+                  Digital Advertising
+                </span>
+              </div>
+              
+              <p className="text-sm text-slate-500">
+                © 2024 Tanglome. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   );
