@@ -27,8 +27,5 @@
         }
       ]
     }
-  ],
-  "errorPages": {
-    "404": "/index.html"
-  }
+  ]
 }
