@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" role="img" aria-label="Tanglome logo">
+  <title>Tanglome</title>
+  <!-- background - ink, matches Logo Mark container -->
+  <rect x="0" y="0" width="32" height="32" rx="7.5" fill="#0A0A0A"/>
+  <!-- outer frame subtle -->
+  <rect x="0.75" y="0.75" width="30.5" height="30.5" rx="7.5" stroke="white" stroke-opacity="0.08" stroke-width="1"/>
+  <!-- T top bar -->
+  <path d="M9 10.2 H23" stroke="white" stroke-width="2.1" stroke-linecap="round"/>
+  <!-- T stem -->
+  <path d="M16 10.2 V24.2" stroke="white" stroke-width="2.1" stroke-linecap="round"/>
+  <!-- knot loop - violet, dashed gap = untangled, matches Logo.jsx -->
+  <circle cx="16" cy="17.1" r="3.4" stroke="#6D28D9" stroke-width="1.7" stroke-linecap="round" stroke-dasharray="15 3.2" transform="rotate(-28 16 17.1)"/>
+</svg>

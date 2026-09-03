@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# AI index - see /llms.txt for structured summary
+Sitemap: https://tanglome.in/sitemap.xml
+LLM: https://tanglome.in/llms.txt

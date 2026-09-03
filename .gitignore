@@ -1,0 +1,19 @@
+# deps
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# env
+.env
+Client/.env
+Server/.env
+Server/data/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# backup
+Client/public/favicon.backup.svg

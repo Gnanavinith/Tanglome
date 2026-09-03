@@ -1,0 +1,17 @@
+{
+  "name": "tanglome-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Tanglome mail server - handles all form submissions via Nodemailer SMTP",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.1",
+    "nodemailer": "^6.9.16"
+  }
+}

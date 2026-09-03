@@ -1,0 +1,13 @@
+{
+  "name": "Tanglome - Web, AI, Apps & Growth Studio",
+  "short_name": "Tanglome",
+  "description": "Coimbatore product studio for web, mobile, AI & growth - serving all India. Live link in 48h.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#6D28D9",
+  "lang": "en-IN",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

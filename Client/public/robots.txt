@@ -1,0 +1,33 @@
+# robots.txt for Tanglome - Coimbatore, Serving All India
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Allow: /api/blogs
+Allow: /api/health
+
+# Host & Sitemaps
+Host: https://tanglome.in
+Sitemap: https://tanglome.in/sitemap.xml
+
+# Crawl-delay for respect
+Crawl-delay: 1
+
+# AI / LLM crawlers explicitly allowed (for llms.txt)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
