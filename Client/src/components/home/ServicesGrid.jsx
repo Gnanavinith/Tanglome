@@ -18,7 +18,7 @@ export default function ServicesGrid() {
  <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tight leading-[0.95] text-ink">
  Six crafts, one roof.
  </h2>
- <p className="font-body text-base md:text-lg text-black/60 mt-3 max-w-2xl leading-relaxed">
+ <p className="font-body text-base md:text-lg text-black/75 mt-3 max-w-2xl leading-relaxed">
  From code to cut - everything your business needs to launch and get seen.
  </p>
 
@@ -48,24 +48,24 @@ export default function ServicesGrid() {
  >
  <Icon size={18} strokeWidth={1.75} />
  </span>
- <span className={`font-body text-[11px] tracking-widest font-medium ${isDark ? "text-paper/35" : "text-black/30"}`}>
+ <span className={`font-body text-[11px] tracking-widest font-medium ${isDark ? "text-paper/70" : "text-black/60"}`}>
  0{i + 1}
  </span>
  </div>
 
- <p className={`font-body text-[11px] tracking-[0.14em] font-medium mt-4 ${isDark ? "text-paper/40" : "text-black/35"}`}>
+ <p className={`font-body text-[11px] tracking-[0.14em] font-medium mt-4 ${isDark ? "text-paper/75" : "text-black/70"}`}>
  {meta.accent}
  </p>
  <h3 className={`font-display font-semibold text-xl leading-tight mt-1 ${isDark ? "text-paper" : "text-ink"}`}>
  {s.title}
  </h3>
- <p className={`font-body text-sm leading-relaxed mt-2 ${isDark ? "text-paper/60" : "text-black/60"}`}>{s.shortDesc}</p>
+ <p className={`font-body text-sm leading-relaxed mt-2 ${isDark ? "text-paper/75" : "text-black/75"}`}>{s.shortDesc}</p>
 
  <div className="mt-auto flex items-center gap-2 pt-5">
  <span className={`inline-flex items-center gap-1 font-body text-xs font-medium ${isDark ? "text-violet-light group-hover:text-white" : "text-violet group-hover:text-violet-deep"}`}>
  Explore <ArrowUpRight size={13} strokeWidth={2} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
  </span>
- <span className={`ml-auto font-body text-xs ${isDark ? "text-paper/30" : "text-black/30"}`}>{meta.stat}</span>
+ <span className={`ml-auto font-body text-xs ${isDark ? "text-paper/55" : "text-black/45"}`}>{meta.stat}</span>
  </div>
  </Link>
  )
@@ -74,7 +74,7 @@ export default function ServicesGrid() {
 
  {/* bridge and secondary micro-CTA keeps funnel warm */}
  <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 rounded-2xl border border-black/10 bg-white p-4 sm:p-5 text-center">
- <p className="font-body text-sm text-black/60">Not sure which service you need?</p>
+ <p className="font-body text-sm text-black/75">Not sure which service you need?</p>
  <a href="#claim-plan" className="inline-flex items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 font-body text-sm font-semibold text-white hover:bg-black transition-colors">
  Start a project <ArrowUpRight size={14} strokeWidth={2} />
  </a>

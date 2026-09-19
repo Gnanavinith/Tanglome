@@ -7,10 +7,10 @@ import ServicesGrid from "../components/home/ServicesGrid.jsx"
 import WhyTanglome from "../components/home/WhyTanglome.jsx"
 import ProcessSteps from "../components/home/ProcessSteps.jsx"
 import Testimonials from "../components/home/Testimonials.jsx"
+import TalkToExperts from "../components/home/TalkToExperts.jsx"
 import FAQ from "../components/home/FAQ.jsx"
 import CTASection from "../components/home/CTASection.jsx"
 import Subscribe from "../components/home/Subscribe.jsx"
-import BrandBoard from "../components/ui/brand-board.jsx"
 
 function Reveal({ children, delay = 0 }) {
  return (
@@ -35,6 +35,7 @@ export default function Home(){
  <Reveal><WhyTanglome /></Reveal>
  <Reveal><ProcessSteps /></Reveal>
  <Reveal><Testimonials /></Reveal>
+ <Reveal><TalkToExperts /></Reveal>
  <Reveal><FAQ /></Reveal>
  <CTASection />
  <Subscribe />

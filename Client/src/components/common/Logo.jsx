@@ -22,7 +22,7 @@ function Mark({ size = 32, className = "", violet = true }) {
 
 export function Wordmark({ light = true, className = "" }) {
  return (
- <span className={`font-display font-bold tracking-[-0.02em] leading-none flex items-baseline ${className}`}>
+ <span className={`font-display font-semibold tracking-[-0.02em] leading-none flex items-baseline ${className}`}>
  <span className={light ? "text-paper" : "text-ink"}>Tang</span>
  <span className="text-violet mx-[0.05em]">l</span>
  <span className={light ? "text-paper" : "text-ink"}>ome</span>
@@ -34,10 +34,10 @@ import { Link } from "react-router-dom"
 
 export default function Logo({ className = "", light = true, withMark = true, size = 32 }) {
  return (
- <Link to="/" className={`flex items-center gap-2.5 ${className}`}>
+<Link to="/" className={`flex items-center gap-2.5 ${className}`}>
  {withMark && <Mark size={size} className={light ? "text-paper" : "text-ink"} />}
- <Wordmark light={light} className={withMark ? "text-[22px]" : "text-xl md:text-2xl"} />
- </Link>
+ <Wordmark light={light} />
+</Link>
  )
 }
 

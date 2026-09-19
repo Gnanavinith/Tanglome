@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Clash Display"', 'sans-serif'],
+        display: ['Oswald', 'sans-serif'],
         body: ['"Satoshi"', 'sans-serif'],
       },
       colors: {

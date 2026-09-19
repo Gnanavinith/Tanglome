@@ -108,7 +108,7 @@ export default function BrandBoard() {
  {/* 6 Typography */}
  <div className="rounded-xl bg-paper p-5 aspect-square flex flex-col">
  <span className="font-body text-[9px] tracking-[0.2em] text-black/30">06 and TYPE</span>
- <p className="font-display font-semibold text-[22px] leading-none tracking-tight text-ink mt-2">Clash Display</p>
+ <p className="font-display font-semibold text-[22px] leading-none tracking-tight text-ink mt-2">Oswald</p>
  <p className="font-display text-[11px] tracking-[0.16em] text-black/30">600 Semibold • Display</p>
  <p className="font-body font-medium text-[16px] text-ink mt-3">Satoshi</p>
  <p className="font-body text-[11px] tracking-[0.16em] text-black/30">400 Regular • Body</p>

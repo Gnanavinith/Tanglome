@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
-import { Plus, Minus } from "lucide-react"
-import faqImg from "../../assets/Faq.png"
+import { Plus } from "lucide-react"
 
 const FAQS = [
  {
@@ -30,90 +29,97 @@ const FAQS = [
  },
 ]
 
+const EASE = [0.16, 1, 0.3, 1]
+
 export default function FAQ() {
  const [open, setOpen] = useState(0)
 
  return (
- <section className="bg-paper py-16 md:py-20 border-t border-black/[0.06]">
- <div className="mx-auto max-w-[1280px] px-6">
- <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-12 items-start">
- <div className="lg:sticky lg:top-24">
- <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tight leading-[0.95] text-ink">
- Got questions?
- <br />
- <span className="text-black/30">We’ve got answers.</span>
- </h2>
- <p className="font-body text-base text-black/60 mt-3 max-w-md leading-relaxed">
- Human answers, not docs. If it’s not here, just ask and we reply in ~2 hours.
- </p>
- <div className="mt-6 hidden lg:block rounded-[20px] overflow-hidden border border-black/10 bg-white shadow-[0_12px_32px_rgba(0,0,0,0.06)]">
- <img
- src={faqImg}
- alt="FAQ and Got questions? We've got answers."
- width={480}
- height={360}
- className="w-full h-[280px] object-cover"
- loading="lazy"
- />
- </div>
- {/* mobile image */}
- <div className="mt-6 lg:hidden rounded-[20px] overflow-hidden border border-black/10 bg-white">
- <img
- src={faqImg}
- alt="FAQ and Got questions? We've got answers."
- width={480}
- height={280}
- className="w-full h-[220px] object-cover"
- loading="lazy"
- />
- </div>
- </div>
+ <section className="relative overflow-hidden bg-paper py-16 md:py-24 border-y border-black/[0.06]">
+  {/* soft violet tint */}
+  <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+  <div
+   className="absolute right-[-8%] top-[-12%] h-[42vh] w-[42vh] rounded-full blur-[110px]"
+   style={{
+   background: "radial-gradient(ellipse, rgba(139,92,246,0.12), transparent 70%)",
+   }}
+  />
+  </div>
 
- <div className="space-y-3">
- {FAQS.map((f, i) => {
- const isOpen = open === i
- return (
- <div
- key={f.q}
- className={`rounded-[16px] border bg-white overflow-hidden transition-colors ${isOpen ? "border-violet/20 shadow-[0_8px_24px_rgba(109,40,217,0.08)]" : "border-black/10 hover:border-black/15"}`}
- >
- <button
- onClick={() => setOpen(isOpen ? -1 : i)}
- className="w-full flex items-start justify-between gap-4 p-5 text-left"
- >
- <span className="font-body font-medium text-[15px] leading-tight text-ink">{f.q}</span>
- <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-colors ${isOpen ? "bg-violet border-violet text-white" : "bg-white border-black/10 text-black/40"}`}>
- {isOpen ? <Minus size={14} /> : <Plus size={14} />}
- </span>
- </button>
- <AnimatePresence initial={false}>
- {isOpen && (
- <motion.div
- initial={{ height: 0, opacity: 0 }}
- animate={{ height: "auto", opacity: 1 }}
- exit={{ height: 0, opacity: 0 }}
- transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
- >
- <p className="font-body text-sm leading-relaxed text-black/60 px-5 pb-5 -mt-1">{f.a}</p>
- </motion.div>
- )}
- </AnimatePresence>
- </div>
- )
- })}
- {/* exit CTA and catches hesitation */}
- <div className="mt-6 rounded-[16px] border border-violet/15 bg-violet/[0.04] p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
- <div>
- <p className="font-body font-medium text-sm text-ink">Still have questions?</p>
- <p className="font-body text-xs text-black/50 mt-1">Book a free 15 minute call. No pitch, just answers.</p>
- </div>
- <a href="#claim-plan" className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-violet px-5 py-2.5 font-body text-sm font-semibold text-white hover:bg-violet-deep transition-colors">
- Start a project <Plus size={14} />
- </a>
- </div>
- </div>
- </div>
- </div>
+  <div className="relative mx-auto max-w-7xl px-6">
+  <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-14 items-start">
+   <div className="lg:sticky lg:top-24">
+   <h2 className="font-display font-semibold tracking-tight leading-[0.92] text-4xl sm:text-5xl text-ink">
+    Got questions?
+    <br />
+    <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-light to-violet">
+    We’ve got answers.
+    </span>
+   </h2>
+   <p className="mt-4 max-w-md font-body text-base leading-relaxed text-ink/60">
+    Human answers, not docs. If it’s not here, just ask and we’ll get back to you.
+   </p>
+   <div className="mt-7 inline-flex items-center gap-2.5 rounded-full border border-black/10 bg-black/[0.03] px-3.5 py-2">
+    <span className="h-1.5 w-1.5 rounded-full bg-violet-light animate-pulse" aria-hidden />
+    <span className="font-body text-sm font-medium text-ink/80">Replies in ~2 hours</span>
+   </div>
+   </div>
+
+   <div className="space-y-3">
+   {FAQS.map((f, i) => {
+    const isOpen = open === i
+    return (
+    <div
+     key={f.q}
+     className={`rounded-2xl border bg-white transition-colors duration-300 ${isOpen ? "border-violet/20 shadow-[0_8px_24px_rgba(109,40,217,0.10)]" : "border-black/10 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:border-black/15"}`}
+    >
+     <button
+     onClick={() => setOpen(isOpen ? -1 : i)}
+     aria-expanded={isOpen}
+     className="flex w-full items-center justify-between gap-4 p-5 text-left"
+     >
+     <span className="font-body font-medium text-[15px] leading-snug text-ink">{f.q}</span>
+     <span
+      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${isOpen ? "bg-violet text-white" : "border border-black/10 text-ink/50"}`}
+     >
+      <motion.span
+      animate={{ rotate: isOpen ? 45 : 0 }}
+      transition={{ duration: 0.25, ease: EASE }}
+      >
+      <Plus size={14} strokeWidth={2} />
+      </motion.span>
+     </span>
+     </button>
+     <AnimatePresence initial={false}>
+     {isOpen && (
+      <motion.div
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: "auto", opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      transition={{ duration: 0.25, ease: EASE }}
+      >
+      <p className="-mt-1 px-5 pb-5 font-body text-sm leading-relaxed text-ink/60">{f.a}</p>
+      </motion.div>
+     )}
+     </AnimatePresence>
+    </div>
+    )
+   })}
+   <div className="flex flex-col items-start justify-between gap-4 rounded-2xl border border-violet/15 bg-violet/[0.05] p-5 sm:flex-row sm:items-center">
+    <div>
+    <p className="font-body font-medium text-sm text-ink">Still have questions?</p>
+    <p className="mt-1 font-body text-xs text-ink/55">Book a free 15 minute call. No pitch, just answers.</p>
+    </div>
+    <a
+    href="#claim-plan"
+    className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-violet px-5 py-2.5 font-body text-sm font-semibold text-white transition-colors hover:bg-violet-deep"
+    >
+    Start a project <Plus size={14} />
+    </a>
+   </div>
+   </div>
+  </div>
+  </div>
  </section>
  )
 }
