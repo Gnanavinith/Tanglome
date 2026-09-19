@@ -8,7 +8,7 @@
     { "source": "/llms.txt", "destination": "/llms.txt" },
     { "source": "/ai.txt", "destination": "/ai.txt" },
     { "source": "/site.webmanifest", "destination": "/site.webmanifest" },
-    { "source": "/((?!assets/).*)", "destination": "/index.html" }
+    { "source": "/((?!assets/).*)", "destination": "/" }
   ],
   "headers": [
     {
